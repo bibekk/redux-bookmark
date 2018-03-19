@@ -1,0 +1,14 @@
+.App {
+  text-align: left;
+}
+
+.App li{
+    list-style-type: none;
+    border-bottom: 1px solid #ccc;
+    padding:3px;
+}
+
+h2{
+    margin-left: 2rem;
+    color: #456;
+}
