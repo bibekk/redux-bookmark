@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/ItemList';
+import App from './containers';
 import registerServiceWorker from './registerServiceWorker';
 
 import {Provider} from 'react-redux'
 import configureStore from './store/configureStore'
+import 'semantic-ui-css/semantic.min.css';
 
 const store = configureStore()
 

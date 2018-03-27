@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
-import {items, itemsHasErrored, itemsIsLoading} from './items'
+import {items,activeMenu, categories, itemsHasErrored, itemsIsLoading} from './items'
 
 export default combineReducers({
     items,
+    activeMenu,
+    categories,
     itemsHasErrored,
     itemsIsLoading
 })
