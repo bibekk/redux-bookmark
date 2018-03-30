@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {deleteCat} from '../actions/action-cat'
 import AddCategory from './addcat'
-import {Button, Table, Divider} from 'semantic-ui-react'
+import CategoryList from '../components/categorylist'
+import {Divider} from 'semantic-ui-react'
 
 
 class Managecat extends Component {
@@ -33,14 +34,7 @@ class Managecat extends Component {
           <div>
               <AddCategory/>
               <Divider />
-              <Table><Table.Body>
-             {
-                categories.map( v => (
-                    <Table.Row key={v.cat_id}><Table.Cell>{v.category}</Table.Cell><Table.Cell><Button icon='delete' color='red' onClick={()=>this.props.deleteCat(v.cat_id)}/></Table.Cell></Table.Row>
-                ))
-             }
-              </Table.Body></Table>
-
+              <CategoryList categories={categories} deleteCat={this.props.deleteCat} />
           </div>
       );
   }

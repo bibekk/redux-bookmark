@@ -6,7 +6,7 @@ class Bookmarkslist extends React.Component{
     render(){
 
         return(
-                <Table striped selectable>
+                <Table striped selectable compact='very' color='blue'>
                    <tbody>
                    {
                       this.props.items.map( item => (

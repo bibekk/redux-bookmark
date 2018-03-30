@@ -17,7 +17,7 @@ class Header extends React.Component {
     const { activeItem } = this.state
     //console.log(this.props.activeMenu);
     return (
-      <Menu>
+      <Menu  pointing secondary size='mini'>
         <Menu.Item header>Bookmarks</Menu.Item>
         <Menu.Item name='Home' active={activeItem === 'Home'} onClick={this.handleItemClick} />
         <Menu.Item name='Categories' active={activeItem === 'Categories'} onClick={this.handleItemClick} />
