@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchBMByCat, errorAfterFiveSeconds, fetchBMCat, addCat, setActiveMenu} from '../actions/items'
+import {addCat} from '../actions/action-cat'
 import {Form, Button} from 'semantic-ui-react'
 
 class AddCategory  extends React.Component {
@@ -36,7 +36,6 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         {
             addCat : (cat) => addCat(cat),
-            setActiveMenu:(menu) => setActiveMenu(menu)
         }, dispatch
     )
 }

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchBMByCat, errorAfterFiveSeconds, fetchBMCat,deleteBM} from '../actions/items'
+import {fetchBMCat} from '../actions/action-cat'
+import {deleteBM,fetchBMByCat, errorAfterFiveSeconds} from '../actions/action-bm'
 import Categorymenu from '../components/categorymenu'
 import Bookmarkslist from '../components/bookmarkslist'
 

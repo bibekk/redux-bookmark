@@ -1,7 +1,5 @@
-import {ITEMS_FETCH_DATA_SUCCESS, FETCH_BM_CAT_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK, ADD_CAT} from './index'
-
-const base_url = 'http://localhost:8080/bookmark'
-
+import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK} from './index'
+import {base_url} from './index'
 
 export const setActiveMenu = (menu) => {
     return {
@@ -33,12 +31,7 @@ export const itemsFetchDataSuccess =(items) => {
     }
 }
 
-export const fetchBlogCatSuccess = (items) =>{
-    return {
-        type: FETCH_BM_CAT_SUCCESS,
-        items
-    }
-}
+
 
 export const createBookmark =(url)=>{
     return {
@@ -57,6 +50,8 @@ export const  errorAfterFiveSeconds = () => {
         }, 5000);
     };
 }
+
+
 
 /*
 export const addBookmark = (url, cat_id) => {
@@ -83,23 +78,7 @@ export const fetchBMByCat = (cat_id) => {
     }
 }
 
-export const fetchBMCat = () => {
-    return (dispatch) => {
-        //dispatch(itemsIsLoading(true))
 
-        fetch(base_url+'/category').then(response =>{
-            if(!response.ok){
-                throw Error(response.statusText)
-            }
-
-            //dispatch(itemsIsLoading(false))
-            return response
-        })
-        .then(response => response.json())
-        .then(items => dispatch(fetchBlogCatSuccess(items)))
-        .catch(()=> dispatch(itemsHasErrored(true)) )
-    }
-}
 
 export const addBookmark = (url,cat_id) => {
         return (dispatch) => {
@@ -121,43 +100,6 @@ export const addBookmark = (url,cat_id) => {
         }
 }
 
-export const addCat = (cat) => {
-        return (dispatch) => {
-            //dispatch(itemsIsLoading(true))
-            fetch( base_url +"/addCat",{
-                       method: 'post',
-                       headers: new Headers({ 'Content-Type': 'application/json'}),
-                       body: JSON.stringify({category: cat})
-                   }).then( response => response.json() )
-                   .then(data =>{
-                       if(data.affectedRows === 1){
-                           dispatch(fetchBMCat())
-                       }else{
-                           dispatch(itemsHasErrored(true))
-                       }
-                    })
-                   .catch(() => dispatch(itemsHasErrored(true)))
-        }
-}
-
-
-export const deleteCat = (cat_id) => {
-        return (dispatch) => {
-            //dispatch(itemsIsLoading(true))
-            fetch( base_url +"/category/"+cat_id,{
-                       method: 'delete',
-                       headers: new Headers({ 'Content-Type': 'application/json'}),
-                   }).then( response => response.json() )
-                   .then(data =>{
-                       if(data.affectedRows === 1){
-                           dispatch(fetchBMCat())
-                       }else{
-                           dispatch(itemsHasErrored(true))
-                       }
-                    })
-                   .catch(() => dispatch(itemsHasErrored(true)))
-        }
-}
 
 export const deleteBM = (id,cat_id) => {
         return (dispatch) => {

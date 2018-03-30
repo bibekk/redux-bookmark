@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchBMByCat, errorAfterFiveSeconds, fetchBMCat, deleteBM} from '../actions/items'
+import {fetchBMByCat, errorAfterFiveSeconds, deleteBM} from '../actions/action-bm'
 import Bookmarkslist from '../components/bookmarkslist'
 import AddBookmark from '../components/addbookmark'
-import {Icon,Button, Divider} from 'semantic-ui-react'
+import { Divider} from 'semantic-ui-react'
 
 class Managebookmarks extends Component {
 
@@ -53,7 +53,6 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         {
             fetchBMByCat : (cat_id) => fetchBMByCat(cat_id), //for fetching booksmarks by selected category
-            fetchBMCat: fetchBMCat, //for fetching categories and count
             deleteBM : (id,cat_id) => deleteBM(id,cat_id),
             errorOut: errorAfterFiveSeconds,
         }, dispatch

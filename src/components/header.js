@@ -3,7 +3,7 @@ import {Menu} from 'semantic-ui-react'
 
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {setActiveMenu} from '../actions/items'
+import {setActiveMenu} from '../actions/action-bm'
 
 class Header extends React.Component {
   state = {activeItem: this.props.activeMenu}

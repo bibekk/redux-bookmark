@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchBMByCat, errorAfterFiveSeconds, fetchBMCat, addBookmark} from '../actions/items'
+import { addBookmark} from '../actions/action-bm'
 import {Form, Button} from 'semantic-ui-react'
 
 class AddBookmark  extends React.Component {
@@ -11,20 +11,22 @@ class AddBookmark  extends React.Component {
     render () {
         let _cat = []
         this.props.categories.forEach((v,i) => {
-            _cat.push(<Form.Field key={i} label={v.category} control='input' type='radio' name='cat' value={v.cat_id}  />)
+            _cat.push(<option key={i} value={v.cat_id}>{v.category}</option>)
         })
         return (
             <Form>
                 <Form.Group grouped>
                   <label>Select Category:</label>
-                 {_cat}
+                 <Form.Select name='cat' control='select'>
+                     {_cat}
+                 </Form.Select>
                </Form.Group>
                   <Form.Field>
                     <label>Bookmark URL</label>
                     <input placeholder='URL' ref='URL' />
                   </Form.Field>
 
-                  <Button type='submit' onClick={()=>this.submitBookmark(this.refs.URL.value, document.querySelector("input[type='radio']:checked").value)}>Submit</Button>
+                  <Button type='submit' onClick={()=>this.submitBookmark(this.refs.URL.value, document.querySelector("select").value)}>Submit</Button>
                </Form>
        )
     }

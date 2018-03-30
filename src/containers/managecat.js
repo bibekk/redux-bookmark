@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchBMByCat, errorAfterFiveSeconds, fetchBMCat, deleteCat} from '../actions/items'
+import {deleteCat} from '../actions/action-cat'
 import AddCategory from './addcat'
-import {Icon,Button, Table, Divider} from 'semantic-ui-react'
+import {Button, Table, Divider} from 'semantic-ui-react'
 
 
 class Managecat extends Component {

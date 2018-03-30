@@ -1,5 +1,7 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+div.vertical a {
+    float: left;
+}
+
+div.vertical {
+    width: 100%!important;
 }

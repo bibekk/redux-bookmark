@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchBMByCat, errorAfterFiveSeconds, fetchBMCat} from '../actions/items'
+import {fetchBMByCat, errorAfterFiveSeconds} from '../actions/action-bm'
+import {fetchBMCat} from '../actions/action-cat'
 import Header from '../components/header'
 import Home from './home'
 import Managebookmarks from './managebookmarks'
