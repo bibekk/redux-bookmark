@@ -7,6 +7,7 @@ import {fetchBMCat} from '../actions/action-cat'
 import Header from '../components/header'
 import Home from './home'
 import Managebookmarks from './managebookmarks'
+import Manageterms from './manageterms'
 import Managecat from './managecat'
 import {Container} from 'semantic-ui-react'
 
@@ -34,6 +35,7 @@ class ItemList extends Component {
           case 'Home': _activeComp = <Home/>; break;
           case 'Categories': _activeComp = <Managecat/>;break;
           case 'Bookmarks': _activeComp = <Managebookmarks />;break;
+          case 'Terms': _activeComp = <Manageterms />; break;
           default: _activeComp =  <Home/>
       }
 

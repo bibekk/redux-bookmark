@@ -1,4 +1,4 @@
-import {ITEMS_FETCH_DATA_SUCCESS, FETCH_BM_CAT_SUCCESS, SET_ACTIVE_MENU} from '../actions'
+import {ITEMS_FETCH_DATA_SUCCESS, FETCH_BM_CAT_SUCCESS, SET_ACTIVE_MENU, FETCH_TERMS_SUCCESS} from '../actions'
 
 export const itemsHasErrored = (state = false, action) =>{
     switch(action.type){
@@ -24,6 +24,13 @@ export const items =(state = [], action) =>{
 export const categories =(state=[], action) =>{
     switch(action.type){
         case FETCH_BM_CAT_SUCCESS: return action.items
+        default: return state
+    }
+}
+
+export const terms =(state=[], action) =>{ //console.log(action);
+    switch(action.type){
+        case FETCH_TERMS_SUCCESS: return action.items
         default: return state
     }
 }

@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
         items: state.items,
         hasErrored: state.itemsHasErrored,
         isLoading: state.itemsIsLoading,
-        cat: state.categories
+        cat: state.categories,
     }
 }
 
@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
             fetchBMByCat : (cat_id) => fetchBMByCat(cat_id), //for fetching booksmarks by selected category
             fetchBMCat: fetchBMCat, //for fetching categories and count
             errorOut: errorAfterFiveSeconds,
-            deleteBM: (id,cat_id) => deleteBM(id,cat_id)
+            deleteBM: (id,cat_id) => deleteBM(id,cat_id),
         }, dispatch
     )
 }

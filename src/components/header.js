@@ -17,11 +17,12 @@ class Header extends React.Component {
     const { activeItem } = this.state
     //console.log(this.props.activeMenu);
     return (
-      <Menu  pointing secondary size='mini'>
+      <Menu  pointing secondary size='small'>
         <Menu.Item header>Bookmarks</Menu.Item>
         <Menu.Item name='Home' active={activeItem === 'Home'} onClick={this.handleItemClick} />
         <Menu.Item name='Categories' active={activeItem === 'Categories'} onClick={this.handleItemClick} />
         <Menu.Item name='Bookmarks' active={activeItem === 'Bookmarks'} onClick={this.handleItemClick} />
+        <Menu.Item name='Terms' active={activeItem === 'Terms'} onClick={this.handleItemClick} />
       </Menu>
     )
   }
