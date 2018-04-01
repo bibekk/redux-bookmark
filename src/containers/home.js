@@ -3,14 +3,14 @@ import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {fetchBMCat} from '../actions/action-cat'
-import {deleteBM,fetchBMByCat, errorAfterFiveSeconds} from '../actions/action-bm'
+import {deleteBM,fetchBMByCat, errorAfterFiveSeconds,editBM, updateBM, cancelEdit} from '../actions/action-bm'
 import Categorymenu from '../components/categorymenu'
 import Bookmarkslist from '../components/bookmarkslist'
 
 class Home extends Component {
 
    componentDidMount(){
-       this.props.fetchBMByCat(1)
+       this.props.fetchBMByCat(34)
        this.props.fetchBMCat()
    }
 
@@ -32,7 +32,7 @@ class Home extends Component {
      return (
           <div>
               <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/>
-              <Bookmarkslist items={items} deleteBM={this.props.deleteBM} />
+              <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
           </div>
       );
   }
@@ -56,6 +56,9 @@ const mapDispatchToProps = (dispatch) => {
             fetchBMCat: fetchBMCat, //for fetching categories and count
             errorOut: errorAfterFiveSeconds,
             deleteBM: (id,cat_id) => deleteBM(id,cat_id),
+            editBM: (id) => editBM(id),
+            cancelEdit: (id) => cancelEdit(id),
+            updateBM: (id,url,cat_id) => updateBM(id,url,cat_id)
         }, dispatch
     )
 }

@@ -1,6 +1,10 @@
 export const ADD_BOOKMARK ='ADD_BOOKMARK'
+export const EDIT_BOOKMARK = 'EDIT_BOOKMARK'
+export const CANCEL_BOOKMARK_EDIT = 'CANCEL_BOOKMARK_EDIT'
+
 export const ADD_CAT = 'ADD_CAT'
 export const DEL_CAT = 'DEL_CAT'
+export const EDIT_CAT = 'EDIT_CAT'
 
 export const ITEMS_FETCH_DATA_SUCCESS = 'ITEMS_FETCH_DATA_SUCCESS'
 export const FETCH_BM_CAT_SUCCESS = 'FETCH_BM_CAT_SUCCESS'

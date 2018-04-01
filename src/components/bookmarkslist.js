@@ -1,21 +1,28 @@
 import React from 'react'
-import {Table,Label,Button} from 'semantic-ui-react'
+import {Table,Label,Button,Form} from 'semantic-ui-react'
 
 class Bookmarkslist extends React.Component{
 
     render(){
-
         return(
-                <Table striped selectable compact='very' color='blue'>
-                   <tbody>
-                   {
-                      this.props.items.map( item => (
-                           <tr key={item.id}><td><a href={item.url} target='_blank'>{item.url}</a></td><td><Label color='grey' tag>{item.category}</Label></td>
-                           <Table.Cell><Button icon='delete' color='red' onClick={()=>this.props.deleteBM(item.id, item.cat_id)}/></Table.Cell></tr>
-                       ))
-                   }
-                   </tbody>
-                </Table>
+            <Table striped selectable compact='very' color='blue'>
+               <tbody>
+               {
+                  this.props.items.map( item => {
+                       return (item.editMode === undefined)?
+                       <tr key={item.id}><td><a href={item.url} target='_blank'>{item.url}</a></td><td><Label color='grey' tag>{item.category}</Label></td>
+                       <Table.Cell><Button icon='delete' color='red' onClick={()=>this.props.deleteBM(item.id, item.cat_id)}/></Table.Cell>
+                       <Table.Cell><Button icon='edit' color='blue' onClick={()=>this.props.editBM(item.id)}/></Table.Cell>
+                       </tr>:
+                       <tr key={item.id}><td><Form><Form.Field><input placeholder='URL' ref='url' defaultValue={item.url} /></Form.Field></Form></td><td><Label color='grey' tag>{item.category}</Label></td>
+                       <Table.Cell><Button icon='write' color='brown' onClick={()=>this.props.updateBM(item.id,this.refs.url.value,item.cat_id)}/></Table.Cell>
+                       <Table.Cell><Button icon='cancel' color='green' onClick={()=>this.props.cancelEdit(item.id)}/></Table.Cell>
+                       <Table.Cell></Table.Cell>
+                       </tr>
+                   })
+               }
+               </tbody>
+            </Table>
         )
 
     }

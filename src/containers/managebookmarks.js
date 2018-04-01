@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchBMByCat, errorAfterFiveSeconds, deleteBM} from '../actions/action-bm'
+import {fetchBMByCat, errorAfterFiveSeconds, deleteBM, editBM, cancelEdit} from '../actions/action-bm'
 import Bookmarkslist from '../components/bookmarkslist'
 import AddBookmark from '../components/addbookmark'
 import { Divider} from 'semantic-ui-react'
 
 class Managebookmarks extends Component {
-
-   componentDidMount(){
-      // this.props.fetchBMByCat(1)
-      // this.props.fetchBMCat()
-   }
 
   render() {
       const {items, isLoading, hasErrored}  = this.props
@@ -33,7 +28,7 @@ class Managebookmarks extends Component {
           <div>
               <AddBookmark />
               <Divider />
-              <Bookmarkslist items={items} deleteBM={this.props.deleteBM} />
+              <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} cancelEdit={this.props.cancelEdit} />
           </div>
       );
   }
@@ -54,6 +49,8 @@ const mapDispatchToProps = (dispatch) => {
         {
             fetchBMByCat : (cat_id) => fetchBMByCat(cat_id), //for fetching booksmarks by selected category
             deleteBM : (id,cat_id) => deleteBM(id,cat_id),
+            editBM : (id) => editBM(id),
+            cancelEdit: (id) => cancelEdit(id),
             errorOut: errorAfterFiveSeconds,
         }, dispatch
     )

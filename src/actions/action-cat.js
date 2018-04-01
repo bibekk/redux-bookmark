@@ -1,4 +1,4 @@
-import { ADD_CAT,FETCH_BM_CAT_SUCCESS, DEL_CAT,base_url} from './index'
+import { ADD_CAT,FETCH_BM_CAT_SUCCESS, DEL_CAT,EDIT_CAT,base_url} from './index'
 import {itemsHasErrored} from './action-bm'
 
 
@@ -19,6 +19,13 @@ export const createCategory = (cat)=>{
 export const delCategory = (cat_id) =>{
     return {
         type: DEL_CAT,
+        cat_id
+    }
+}
+
+export const editCat = (cat_id) => {
+    return {
+        type: EDIT_CAT,
         cat_id
     }
 }
@@ -69,6 +76,25 @@ export const deleteCat = (cat_id) => {
             fetch( base_url +"/category/"+cat_id,{
                        method: 'delete',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
+                   }).then( response => response.json() )
+                   .then(data =>{
+                       if(data.affectedRows === 1){
+                           dispatch(fetchBMCat())
+                       }else{
+                           dispatch(itemsHasErrored(true))
+                       }
+                    })
+                   .catch(() => dispatch(itemsHasErrored(true)))
+        }
+}
+
+export const updateCat = (cat_id,category) => {
+        return (dispatch) => {
+            //dispatch(itemsIsLoading(true))
+            fetch( base_url+'/updateCat',{
+                       method: 'put',
+                       headers: new Headers({ 'Content-Type': 'application/json'}),
+                        body: JSON.stringify({category: category , cat_id: cat_id})
                    }).then( response => response.json() )
                    .then(data =>{
                        if(data.affectedRows === 1){
