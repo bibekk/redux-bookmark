@@ -1,4 +1,4 @@
-import { ADD_CAT,FETCH_BM_CAT_SUCCESS, DEL_CAT,EDIT_CAT, CANCEL_CAT_EDIT, UPDATE_SUCCESS_CAT,base_url} from './index'
+import { ADD_CAT,FETCH_BM_CAT_SUCCESS, DEL_CAT,EDIT_CAT, CANCEL_CAT_EDIT, UPDATE_SUCCESS_CAT, DELETE_SUCCESS_CAT, base_url} from './index'
 import {itemsHasErrored} from './action-bm'
 
 
@@ -23,6 +23,15 @@ export const updateSuccess = (cat_id, category) => {
         category
     }
 }
+
+
+export const deleteSuccess = (cat_id) => {
+    return {
+        type: DELETE_SUCCESS_CAT,
+        cat_id,
+    }
+}
+
 
 export const cancelCatEdit = (cat_id) => {
     return {
@@ -94,7 +103,8 @@ export const deleteCat = (cat_id) => {
                    }).then( response => response.json() )
                    .then(data =>{
                        if(data.affectedRows === 1){
-                           dispatch(fetchBMCat())
+                           //dispatch(fetchBMCat())
+                           dispatch(deleteSuccess(cat_id))
                        }else{
                            dispatch(itemsHasErrored(true))
                        }

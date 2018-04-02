@@ -1,5 +1,5 @@
 import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU,FETCH_TERMS_SUCCESS,
-     EDIT_BOOKMARK, CANCEL_BOOKMARK_EDIT,UPDATE_SUCCESS_BM
+     EDIT_BOOKMARK, CANCEL_BOOKMARK_EDIT,UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM
      } from '../actions'
 
 export const itemsHasErrored = (state = false, action) =>{
@@ -22,6 +22,7 @@ export const items =(state = [], action) =>{
         case EDIT_BOOKMARK: return editBookmarkReducer(state,action)
         case CANCEL_BOOKMARK_EDIT: return cancelEditBookmarkReducer(state,action)
         case UPDATE_SUCCESS_BM: return updateBookmarkSuccessReducer(state,action)
+        case DELETE_SUCCESS_BM: return state.filter(b => b.id !== action.id)
         default: return state
     }
 }

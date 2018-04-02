@@ -1,4 +1,5 @@
-import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK, EDIT_BOOKMARK ,CANCEL_BOOKMARK_EDIT, UPDATE_SUCCESS_BM} from './index'
+import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK, EDIT_BOOKMARK ,CANCEL_BOOKMARK_EDIT, UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM} from './index'
+import {fetchBMCat} from './action-cat'
 import {base_url} from './index'
 
 export const setActiveMenu = (menu) => {
@@ -22,6 +23,14 @@ export const updateSuccess = (id,url) => {
         url
     }
 }
+
+export const deleteSuccess = (id) => {
+    return {
+        type: DELETE_SUCCESS_BM,
+        id,
+    }
+}
+
 
 export const itemsHasErrored = (bool) =>{
     return {
@@ -130,7 +139,9 @@ export const deleteBM = (id,cat_id) => {
                    }).then( response => response.json() )
                    .then(data =>{
                        if(data.affectedRows === 1){
-                           dispatch(fetchBMByCat(cat_id))
+                           dispatch(fetchBMCat())
+                           dispatch(deleteSuccess(id))
+                           //dispatch(fetchBMByCat(cat_id))
                        }else{
                            dispatch(itemsHasErrored(true))
                        }

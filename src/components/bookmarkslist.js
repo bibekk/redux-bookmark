@@ -13,7 +13,7 @@ class Bookmarkslist extends React.Component{
 
                        return (item.editMode === undefined)?
                        <tr key={item.id}><td><a href={item.url} target='_blank'>{item.url}</a></td><td><Label color='grey' tag>{item.category}</Label></td>
-                       <Table.Cell><Button icon='delete' color='red' onClick={()=>this.props.deleteBM(item.id, item.cat_id)}/></Table.Cell>
+                       <Table.Cell><Button icon='delete' color='red' onClick={()=> { if( window.confirm('Are you sure you wish to delete this bookmark?')) this.props.deleteBM(item.id, item.cat_id) }}/></Table.Cell>
                        <Table.Cell><Button icon='edit' color='blue' onClick={()=>this.props.editBM(item.id)}/></Table.Cell>
                        </tr>:
                        <tr key={item.id}><td><Form><Form.Field><input placeholder='URL' id={_urlfield} defaultValue={item.url} /></Form.Field></Form></td><td><Label color='grey' tag>{item.category}</Label></td>
