@@ -1,4 +1,6 @@
-import {ITEMS_FETCH_DATA_SUCCESS, FETCH_BM_CAT_SUCCESS, SET_ACTIVE_MENU, EDIT_CAT,FETCH_TERMS_SUCCESS, EDIT_BOOKMARK, CANCEL_BOOKMARK_EDIT} from '../actions'
+import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU,FETCH_TERMS_SUCCESS,
+     EDIT_BOOKMARK, CANCEL_BOOKMARK_EDIT,UPDATE_SUCCESS_BM
+     } from '../actions'
 
 export const itemsHasErrored = (state = false, action) =>{
     switch(action.type){
@@ -16,20 +18,14 @@ export const itemsIsLoading =(state = false, action) =>{
 
 export const items =(state = [], action) =>{
     switch(action.type){
-        case ITEMS_FETCH_DATA_SUCCESS: return action.items
+        case ITEMS_FETCH_DATA_SUCCESS: return  action.items
         case EDIT_BOOKMARK: return editBookmarkReducer(state,action)
         case CANCEL_BOOKMARK_EDIT: return cancelEditBookmarkReducer(state,action)
+        case UPDATE_SUCCESS_BM: return updateBookmarkSuccessReducer(state,action)
         default: return state
     }
 }
 
-export const categories =(state=[], action) =>{
-    switch(action.type){
-        case FETCH_BM_CAT_SUCCESS: return action.items
-        case EDIT_CAT: return editCatReducer(state,action)
-        default: return state
-    }
-}
 
 export const terms =(state=[], action) =>{ //console.log(action);
     switch(action.type){
@@ -64,10 +60,10 @@ const cancelEditBookmarkReducer  =  (state, action) =>{
     return Object.assign(_bms)
 }
 
-const editCatReducer  =  (state, action) =>{
-    let _cats =[]
-     _cats = state.map( cat =>
-       (cat.cat_id === action.cat_id)?Object.assign({},cat, {editMode: true}): cat
+const updateBookmarkSuccessReducer  =  (state, action) =>{
+    let _bms =[]
+     _bms = state.map( bm =>
+       (bm.id === action.id)?Object.assign({},bm, {url: action.url, editMode: undefined}): bm
     )
-    return Object.assign(_cats)
+    return Object.assign(_bms)
 }

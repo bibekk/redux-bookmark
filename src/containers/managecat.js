@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {deleteCat,editCat,updateCat} from '../actions/action-cat'
+import {deleteCat,editCat,updateCat, cancelCatEdit} from '../actions/action-cat'
 import AddCategory from './addcat'
 import CategoryList from '../components/categorylist'
 import {Divider} from 'semantic-ui-react'
@@ -34,7 +34,7 @@ class Managecat extends Component {
           <div>
               <AddCategory/>
               <Divider />
-              <CategoryList categories={categories} deleteCat={this.props.deleteCat} editCat= {this.props.editCat} updateCat={this.props.updateCat} />
+              <CategoryList categories={categories} deleteCat={this.props.deleteCat} editCat= {this.props.editCat} updateCat={this.props.updateCat} cancelCatEdit={this.props.cancelCatEdit} />
           </div>
       );
   }
@@ -55,7 +55,8 @@ const mapDispatchToProps = (dispatch) => {
         {
             deleteCat : (cat_id)=> deleteCat(cat_id),
             editCat: (cat_id) => editCat(cat_id),
-            updateCat: (cat_id,category) => updateCat(cat_id,category)
+            updateCat: (cat_id,category) => updateCat(cat_id,category),
+            cancelCatEdit: (cat_id) => cancelCatEdit(cat_id)
         }, dispatch
     )
 }
