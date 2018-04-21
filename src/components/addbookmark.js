@@ -17,7 +17,7 @@ class AddBookmark  extends React.Component {
             <Form>
                 <Form.Group grouped>
                   <label>Select Category:</label>
-                 <Form.Select name='cat' control='select'>
+                 <Form.Select name='cat' control='select' size={this.props.categories.length}>
                      {_cat}
                  </Form.Select>
                </Form.Group>
