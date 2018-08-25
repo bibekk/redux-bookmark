@@ -1,4 +1,4 @@
-import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK, EDIT_BOOKMARK ,CANCEL_BOOKMARK_EDIT, UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM} from './index'
+import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK, ADD_BOOKMARK_SUCCESS, EDIT_BOOKMARK ,CANCEL_BOOKMARK_EDIT, UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM} from './index'
 import {fetchBMCat} from './action-cat'
 import {base_url} from './index'
 
@@ -63,6 +63,12 @@ export const createBookmark =(url)=>{
     }
 }
 
+export const createBookmarkSuccess=() =>{ 
+    return {
+        type: ADD_BOOKMARK_SUCCESS,
+    }
+}
+
 export const editBM = (id) => {
     return {
         type: EDIT_BOOKMARK,
@@ -120,6 +126,7 @@ export const addBookmark = (url,cat_id) => {
                    }).then( response => response.json() )
                    .then(data =>{
                        if(data.affectedRows === 1){
+                           dispatch(createBookmarkSuccess())
                            dispatch(fetchBMByCat(cat_id))
                        }else{
                            dispatch(itemsHasErrored(true))
