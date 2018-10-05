@@ -2,6 +2,8 @@ import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU,FETCH_TERMS_SUCCESS,
      EDIT_BOOKMARK, CANCEL_BOOKMARK_EDIT,UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM, ADD_BOOKMARK_SUCCESS,ADD_BOOKMARK,
      } from '../actions'
 
+import {BOOKMARK_ADDED_SET_OFF} from '../actions'
+
 export const itemsHasErrored = (state = false, action) =>{
     switch(action.type){
         case 'ITEMS_HAS_ERRORED': return action.hasErrored
@@ -9,10 +11,11 @@ export const itemsHasErrored = (state = false, action) =>{
     }
 }
 
-export const bookmarksAdded = (state = false, action) =>{ //console.log(action.type);
+export const bookmarksAdded = (state = false, action) =>{ //console.log(action);
     switch(action.type){ 
         case ADD_BOOKMARK_SUCCESS: return true
         case ADD_BOOKMARK: return false
+        case BOOKMARK_ADDED_SET_OFF: return false
         default: return state
     }
 }

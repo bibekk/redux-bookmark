@@ -1,4 +1,6 @@
 import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK, ADD_BOOKMARK_SUCCESS, EDIT_BOOKMARK ,CANCEL_BOOKMARK_EDIT, UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM} from './index'
+import {BOOKMARK_ADDED_SET_OFF} from './index'
+
 import {fetchBMCat} from './action-cat'
 import {base_url} from './index'
 
@@ -86,6 +88,11 @@ export const  errorAfterFiveSeconds = () => {
     };
 }
 
+export const bookmarksAddedSetOff = () =>{ console.log('setoff')
+    return{
+        type: BOOKMARK_ADDED_SET_OFF
+    }
+}
 
 
 /*
@@ -132,7 +139,7 @@ export const addBookmark = (url,cat_id) => {
                            dispatch(itemsHasErrored(true))
                        }
                     })
-                   .catch(() => dispatch(itemsHasErrored(true)))
+                   .catch((e) =>{ console.log(e); dispatch(itemsHasErrored(true))})
         }
 }
 

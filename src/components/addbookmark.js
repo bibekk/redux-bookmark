@@ -1,12 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { addBookmark, createBookmark} from '../actions/action-bm'
+import { addBookmark, createBookmark, bookmarksAddedSetOff} from '../actions/action-bm'
 import {Form, Button, Message} from 'semantic-ui-react'
 
 class AddBookmark  extends React.Component {
     submitBookmark(url,cat){
         this.props.addBookmark(url,cat);
+        this.timer = setTimeout(()=> {this.props.bookmarksAddedSetOff()},1000)
     }
     
     handleDismiss = () => {
@@ -61,6 +62,7 @@ const mapDispatchToProps = (dispatch) => {
         {
             addBookmark: (url,cat_id) => addBookmark(url,cat_id),
             createBookmark: ()=> createBookmark(),
+            bookmarksAddedSetOff: ()=> bookmarksAddedSetOff()
         }, dispatch
     )
 }
