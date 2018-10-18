@@ -12,7 +12,7 @@ class Bookmarkslist extends React.Component{
                       let _urlfield = 'url_'+item.id
 
                        return (item.editMode === undefined)?
-                       <tr key={item.id}><td><a href={item.url} target='_blank'>{item.url}</a></td><td><Label color='grey' tag>{item.category}</Label></td>
+                       <tr key={item.id}><td><a href={item.url} target='_blank' rel='noopener noreferrer'>{item.url}</a></td><td><Label color='grey' tag>{item.category}</Label></td>
                        <Table.Cell><Button icon='delete' color='red' onClick={()=> { if( window.confirm('Are you sure you wish to delete this bookmark?')) this.props.deleteBM(item.id, item.cat_id) }}/></Table.Cell>
                        <Table.Cell><Button icon='edit' color='blue' onClick={()=>this.props.editBM(item.id)}/></Table.Cell>
                        </tr>:

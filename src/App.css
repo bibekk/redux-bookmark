@@ -12,3 +12,27 @@ h2{
     margin-left: 2rem;
     color: #456;
 }
+
+div.vertical.menu .active.item {
+    background: #ccc!important;
+    color: #2d42cc;
+    font-weight: bold;
+}
+
+table td {
+    max-width: 900px;
+    overflow-y: hidden;
+}
+select option {
+    float: left;
+    width: 100px;
+    border: 1px solid #ebebeb;
+    padding: 5px;
+}
+select option:hover {
+    color: rgb(95,156,45);
+    cursor: pointer;
+}
+select {
+    max-height: 150px;
+}
