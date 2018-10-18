@@ -36,3 +36,12 @@ select option:hover {
 select {
     max-height: 150px;
 }
+
+/* for categories*/
+table.teal tr {
+    float: left;
+    min-width: 200px;
+}
+table.teal tr td:first-child {
+    min-width: 100px;
+}
