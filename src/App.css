@@ -25,16 +25,17 @@ table td {
 }
 select option {
     float: left;
-    width: 100px;
+    width: 200px;
     border: 1px solid #ebebeb;
     padding: 5px;
+    font-size: 15pt;
 }
 select option:hover {
     color: rgb(95,156,45);
     cursor: pointer;
 }
 select {
-    max-height: 150px;
+    max-height: 400px;
 }
 
 /* for categories*/
@@ -45,3 +46,15 @@ table.teal tr {
 table.teal tr td:first-child {
     min-width: 100px;
 }
+
+/* home menu*/
+
+div.vertical.menu a {
+    border: 1px solid #ccc!important;
+    margin: 2px;   
+    border-radius: 5px;
+    background: #ebebeb!important;
+    width: 180px;
+    font-weight: bold!important;
+}
+

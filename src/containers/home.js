@@ -7,6 +7,7 @@ import {deleteBM,fetchBMByCat, errorAfterFiveSeconds,editBM, updateBM, cancelEdi
 import Categorymenu from '../components/categorymenu'
 import Bookmarkslist from '../components/bookmarkslist'
 
+
 class Home extends Component {
 
    componentDidMount(){

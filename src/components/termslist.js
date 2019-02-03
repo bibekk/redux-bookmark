@@ -11,6 +11,7 @@ class TermsList extends React.Component{
             )
         }
         return(
+            <>
             <Table size='small' compact='very' color='grey'><Table.Body>
             {
               data.map( v => (
@@ -20,6 +21,7 @@ class TermsList extends React.Component{
               ))
             }
             </Table.Body></Table>
+                </>
         )
 
     }
