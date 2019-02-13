@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import {items,activeMenu, itemsHasErrored, itemsIsLoading,terms, bookmarksAdded } from './bm'
+import {items,activeMenu, itemsHasErrored, itemsIsLoading,terms, bookmarksAdded, isValidLogin } from './bm'
 import {categories } from './cat'
 
 
@@ -11,4 +11,5 @@ export default combineReducers({
     itemsHasErrored,
     itemsIsLoading,
     bookmarksAdded,
+    isValidLogin
 })

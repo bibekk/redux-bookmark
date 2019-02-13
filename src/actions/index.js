@@ -20,5 +20,6 @@ export const SET_ACTIVE_MENU ='SET_ACTIVE_MENU'
 export const FETCH_TERMS_SUCCESS ='FETCH_TERMS_SUCCESS'
 export const ADD_TERM = 'ADD_TERM'
 export const DELETE_TERM = 'DELETE_TERM'
+export const VALID = 'VALID'
 
-export const base_url = 'http://localhost:8080/bookmark'
+export const base_url =  'http://localhost:8080/bookmark' //http://192.168.1.109:8080/bookmark'

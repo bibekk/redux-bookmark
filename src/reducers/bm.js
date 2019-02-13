@@ -1,5 +1,5 @@
 import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU,FETCH_TERMS_SUCCESS,
-     EDIT_BOOKMARK, CANCEL_BOOKMARK_EDIT,UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM, ADD_BOOKMARK_SUCCESS,ADD_BOOKMARK,
+     EDIT_BOOKMARK, CANCEL_BOOKMARK_EDIT,UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM, ADD_BOOKMARK_SUCCESS,ADD_BOOKMARK,VALID
      } from '../actions'
 
 import {BOOKMARK_ADDED_SET_OFF} from '../actions'
@@ -24,6 +24,13 @@ export const bookmarksAdded = (state = false, action) =>{ //console.log(action);
 export const itemsIsLoading =(state = false, action) =>{
     switch(action.type){
         case 'ITEMS_IS_LOADING': return action.isLoading
+        default: return state
+    }
+}
+
+export const isValidLogin =(state =0 , action) =>{
+    switch(action.type){
+        case VALID:  return action.data
         default: return state
     }
 }
