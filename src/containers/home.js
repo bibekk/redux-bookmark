@@ -6,6 +6,7 @@ import {fetchBMCat} from '../actions/action-cat'
 import {deleteBM,fetchBMByCat, errorAfterFiveSeconds,editBM, updateBM, cancelEdit} from '../actions/action-bm'
 import Categorymenu from '../components/categorymenu'
 import Bookmarkslist from '../components/bookmarkslist'
+import Search from './search'
 
 
 class Home extends Component {
@@ -16,7 +17,7 @@ class Home extends Component {
    }
 
   render() {
-      const {cat,fetchBMByCat,items, isLoading, hasErrored}  = this.props
+      const {cat,fetchBMByCat,items, isLoading, hasErrored, search}  = this.props
 
       if(hasErrored){
           return (
@@ -33,7 +34,10 @@ class Home extends Component {
      return (
           <div>
               <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/>
-              <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
+              { search.length === 0  &&
+                <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
+              }
+              <Search/>
           </div>
       );
   }
@@ -42,6 +46,7 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        search: state.search,
         items: state.items,
         hasErrored: state.itemsHasErrored,
         isLoading: state.itemsIsLoading,

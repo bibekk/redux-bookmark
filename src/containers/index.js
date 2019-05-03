@@ -21,40 +21,40 @@ class ItemList extends Component {
 
 
   render() {
-      const {activeMenu, hasErrored, isLoading, isValidLogin}  = this.props
-      
-      let _activeComp
+        const {activeMenu, hasErrored, isLoading, isValidLogin}  = this.props
+        
+        let _activeComp
 
-      if(hasErrored){
-          return (
-              <p>Error!!</p>
-          )
-      }
-      
-      if(isValidLogin === 0){
-          return <Login processLogin = {(pass) => this.processLogin(pass)} />
-      }
+        if(hasErrored){
+            return (
+                <p>Error!!</p>
+            )
+        }
+        
+        if(isValidLogin === 0){
+            return <Login processLogin = {(pass) => this.processLogin(pass)} />
+        }
 
-      if(isLoading){
-          return(
-              <div style={{backgroundColor: '#ebebeb',padding: '5px',border: '2px solid #333'}}>Loading...</div>
-          )
-      }
+        if(isLoading){
+            return(
+                <div style={{backgroundColor: '#ebebeb',padding: '5px',border: '2px solid #333'}}>Loading...</div>
+            )
+        }
 
-      switch(activeMenu) {
-          case 'Home': _activeComp = <Home/>; break;
-          case 'Categories': _activeComp = <Managecat/>;break;
-          case 'Bookmarks': _activeComp = <Managebookmarks />;break;
-          case 'Terms': _activeComp = <Manageterms />; break;
-          default: _activeComp =  <Home/>
-      }
+        switch(activeMenu) {
+            case 'Home': _activeComp = <Home/>; break;
+            case 'Categories': _activeComp = <Managecat/>;break;
+            case 'Bookmarks': _activeComp = <Managebookmarks />;break;
+            case 'Terms': _activeComp = <Manageterms />; break;
+            default: _activeComp =  <Home/>
+        }
 
-     return (
-      <Container>
-          <Header />
-          {_activeComp}
-      </Container>
-    );
+        return (
+        <Container>
+            <Header />
+            {_activeComp}
+        </Container>
+        );
   }
 }
 

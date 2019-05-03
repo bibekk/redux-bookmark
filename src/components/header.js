@@ -1,9 +1,9 @@
 import React from 'react'
-import {Menu} from 'semantic-ui-react'
+import {Menu, Input} from 'semantic-ui-react'
 
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {setActiveMenu} from '../actions/action-bm'
+import {setActiveMenu, searchData, cleanSearch} from '../actions/action-bm'
 
 class Header extends React.Component {
   state = {activeItem: this.props.activeMenu}
@@ -11,6 +11,15 @@ class Header extends React.Component {
   handleItemClick = (e, { name }) => {
       this.setState({ activeItem: name })
       this.props.setActiveMenu(name)
+  }
+
+  search  = (e,v) => {
+    if(v.value.length > 2){
+      this.props.searchData(v.value)
+    }
+    if(v.value.length === 0){
+      this.props.cleanSearch()
+    }
   }
 
   render() {
@@ -23,6 +32,11 @@ class Header extends React.Component {
         <Menu.Item name='Categories' active={activeItem === 'Categories'} onClick={this.handleItemClick} />
         <Menu.Item name='Bookmarks' active={activeItem === 'Bookmarks'} onClick={this.handleItemClick} />
         <Menu.Item name='Terms' active={activeItem === 'Terms'} onClick={this.handleItemClick} />
+        <Menu.Menu position='right'>
+          <Menu.Item>
+            <Input icon='search' placeholder='Search...' onChange={this.search} />
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
     )
   }
@@ -38,7 +52,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         {
-          setActiveMenu: setActiveMenu
+          setActiveMenu: setActiveMenu,
+          searchData: (text) => searchData(text),
+          cleanSearch: cleanSearch,
         }, dispatch
     )
 }

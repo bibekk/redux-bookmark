@@ -14,7 +14,7 @@ class Login  extends React.Component {
             <Form>
                   <Form.Field>
                     <label>Login</label>
-                    <input placeholder='pass' ref='pass' />
+                    <input placeholder='pass' ref='pass' type='password' />
                   </Form.Field>
                   <Button type='button' onClick={()=>this.submitTerm(this.refs.pass.value)}>Go</Button>
                </Form>

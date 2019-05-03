@@ -13,11 +13,7 @@ h2{
     color: #456;
 }
 
-div.vertical.menu .active.item {
-    background: #ccc!important;
-    color: #2d42cc;
-    font-weight: bold;
-}
+
 
 table td {
     max-width: 900px;
@@ -52,9 +48,13 @@ table.teal tr td:first-child {
 div.vertical.menu a {
     border: 1px solid #ccc!important;
     margin: 2px;   
-    border-radius: 5px;
-    background: #ebebeb!important;
+    border-radius: 3px;
+    background: rgba(215,249,207,0.44)!important;
     width: 180px;
     font-weight: bold!important;
 }
 
+div.vertical.menu .active.item {
+    background: rgba(52,189,234,0.77)!important;
+    color: #fdfdfb;
+}

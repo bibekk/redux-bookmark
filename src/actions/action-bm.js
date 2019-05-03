@@ -1,5 +1,5 @@
 import {ITEMS_FETCH_DATA_SUCCESS, SET_ACTIVE_MENU, ADD_BOOKMARK, ADD_BOOKMARK_SUCCESS, EDIT_BOOKMARK ,CANCEL_BOOKMARK_EDIT, UPDATE_SUCCESS_BM, DELETE_SUCCESS_BM} from './index'
-import {BOOKMARK_ADDED_SET_OFF} from './index'
+import {BOOKMARK_ADDED_SET_OFF, SEARCH_RESULT, CLEAN_SEARCH} from './index'
 
 import {fetchBMCat} from './action-cat'
 import {base_url} from './index'
@@ -78,6 +78,12 @@ export const editBM = (id) => {
     }
 }
 
+export const cleanSearch = () =>{
+    return {
+        type: CLEAN_SEARCH
+    }
+}
+
 export const  errorAfterFiveSeconds = () => {
     // We return a function instead of an action object
     return (dispatch) => {
@@ -120,7 +126,24 @@ export const fetchBMByCat = (cat_id) => {
     }
 }
 
-
+export const searchData= (text) => {
+    return (dispatch) => {
+        //dispatch(itemsIsLoading(true))
+        fetch(base_url+'/search?searchtext='+text).then(response =>{
+            if(!response.ok){
+                throw Error(response.statusText)
+            }
+            //dispatch(itemsIsLoading(false))
+            return response
+        })
+        .then(response => response.json())
+        .then(items => dispatch({
+            type: SEARCH_RESULT,
+            data: items
+        }))
+        .catch(()=> dispatch(itemsHasErrored(true)) )
+    }
+}
 
 export const addBookmark = (url,cat_id) => {
         return (dispatch) => {

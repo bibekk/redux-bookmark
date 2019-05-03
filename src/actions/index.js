@@ -22,4 +22,6 @@ export const ADD_TERM = 'ADD_TERM'
 export const DELETE_TERM = 'DELETE_TERM'
 export const VALID = 'VALID'
 
-export const base_url =  'http://localhost:8080/bookmark' //http://192.168.1.109:8080/bookmark'
+export const SEARCH_RESULT = 'SEARCH_RESULT'
+export const CLEAN_SEARCH = 'CLEAN_SEARCH'
+export const base_url = 'http://' + window.location.hostname + ":8080/bookmark"// 'http://localhost:8080/bookmark'  // 'http://192.168.1.109:8080/bookmark'
