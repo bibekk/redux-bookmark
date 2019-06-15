@@ -35,7 +35,8 @@ class Bookmarkslist extends React.Component{
                             <Table.Cell></Table.Cell></tr>
                           )
                       }
-
+                    
+                      return null;
                      
                    })
                }

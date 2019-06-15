@@ -17,7 +17,7 @@ class AddTerm  extends React.Component {
                     <label>Bookmark Term</label>
                     <input placeholder='Term' ref='term' />
                   </Form.Field>
-                  <Button type='submit' onClick={()=>this.submitTerm(this.refs.term.value)}>Add</Button>
+                  <Button type='submit' onClick={()=>this.submitTerm(this.refs.term.value)} color='brown'>Add</Button>
                </Form>
        )
     }

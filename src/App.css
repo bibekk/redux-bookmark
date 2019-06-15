@@ -22,16 +22,19 @@ table td {
 select option {
     float: left;
     width: 200px;
-    border: 1px solid #ebebeb;
+    border: 2px solid #60a1ec;
+    box-shadow: 3px 1px 1px #ccc;
     padding: 5px;
     font-size: 15pt;
+    margin: 2px;
 }
 select option:hover {
     color: rgb(95,156,45);
     cursor: pointer;
 }
+
 select {
-    max-height: 400px;
+    max-height: 600px;
 }
 
 /* for categories*/
@@ -44,6 +47,9 @@ table.teal tr td:first-child {
 }
 
 /* home menu*/
+div.menu{
+    background: rgba(27,48,122,0.26)!important;
+}
 
 div.vertical.menu a {
     border: 1px solid #ccc!important;

@@ -26,7 +26,7 @@ class AddBookmark  extends React.Component {
                     <input placeholder='URL' ref='URL' />
                   </Form.Field>
 
-                  <Button type='submit' onClick={()=>this.submitBookmark(this.refs.URL.value, document.querySelector("select").value)}>Submit</Button>
+                  <Button type='submit' onClick={()=>this.submitBookmark(this.refs.URL.value, document.querySelector("select").value)} color='brown'>Add</Button>
                 { this.props.added === true &&
                     <Message color='blue'
                         onDismiss={this.handleDismiss}
@@ -35,7 +35,6 @@ class AddBookmark  extends React.Component {
                 }
                                       
                 <Form.Group grouped>
-                 <label>Select Category:</label>
                  <Form.Select name='cat' control='select' size={this.props.categories.length}>
                      {_cat}
                  </Form.Select>
