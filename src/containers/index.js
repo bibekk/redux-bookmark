@@ -31,8 +31,17 @@ class ItemList extends Component {
             )
         }
         
-        if(isValidLogin === 0){
+        if(isValidLogin === null ){
             return <Login processLogin = {(pass) => this.processLogin(pass)} />
+        }
+
+        if(isValidLogin === 0){
+            return (
+                <>
+                <h4>Invalid Login</h4>
+                <Login processLogin = {(pass) => this.processLogin(pass)} />
+                </>
+            )
         }
 
         if(isLoading){
@@ -65,7 +74,8 @@ const mapStateToProps = (state) => {
         hasErrored: state.itemsHasErrored,
         isLoading: state.itemsIsLoading,
         cat: state.categories,
-        isValidLogin: state.isValidLogin
+        isValidLogin: state.isValidLogin,
+        loading: state.loading_status
     }
 }
 
