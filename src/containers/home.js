@@ -32,13 +32,16 @@ class Home extends Component {
       }
 
      return (
-          <div>
+          <>
               <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/>
+              
               { search.length === 0  &&
-                <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
+                <div className='main-body'>
+                    <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
+                </div>
               }
               <Search/>
-          </div>
+          </>
       );
   }
 }
