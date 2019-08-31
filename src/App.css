@@ -51,12 +51,17 @@ div.menu{
     background: rgba(27,48,122,0.26)!important;
 }
 
+div.vertical.menu{
+    overflow-y: auto;
+    height: 1000px;
+}
+
 div.vertical.menu a {
     border: 1px solid #ccc!important;
     margin: 2px;   
     border-radius: 3px;
     background: rgba(215,249,207,0.44)!important;
-    width: 180px;
+    width: 196px;
     font-weight: bold!important;
 }
 

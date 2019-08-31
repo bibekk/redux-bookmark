@@ -26,7 +26,7 @@ export const fetchTermsFromDB = () => {
     return (dispatch) => {
         //dispatch(itemsIsLoading(true))
 
-        fetch(base_url+'/terms').then(response =>{
+        fetch(base_url()+'/terms').then(response =>{
             if(!response.ok){
                 throw Error(response.statusText)
             }
@@ -44,7 +44,7 @@ export const addTermToDB = (term) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
             dispatch(createTerm(term))
-            fetch( base_url +"/terms",{
+            fetch( base_url() +"/terms",{
                        method: 'post',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                        body: JSON.stringify({term: term})
@@ -65,7 +65,7 @@ export const deleteTermFromDB = (id) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
             dispatch(deleteTerm(id))
-            fetch( base_url +"/terms/"+id,{
+            fetch( base_url() +"/terms/"+id,{
                        method: 'delete',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                    }).then( response => response.json() )
@@ -86,7 +86,7 @@ export const deleteTermFromDB = (id) => {
 export const matchPass = (pass) => {
     return (dispatch) => {
         //dispatch(itemsIsLoading(true))
-        fetch(base_url+'/getPass/'+ pass).then(response =>{
+        fetch(base_url() +'/getPass/'+ pass).then(response =>{
             if(!response.ok){
                 throw Error(response.statusText)
             }

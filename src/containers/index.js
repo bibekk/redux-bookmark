@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {fetchBMByCat, errorAfterFiveSeconds} from '../actions/action-bm'
 import {matchPass} from '../actions/action-terms'
-
+import {ENV} from '../actions'
 import {fetchBMCat} from '../actions/action-cat'
 import Header from '../components/header'
 import Home from './home'
@@ -31,8 +31,10 @@ class ItemList extends Component {
             )
         }
         
-        if(isValidLogin === 0){
-            return <Login processLogin = {(pass) => this.processLogin(pass)} />
+        if(ENV !== 'uat'){
+            if(isValidLogin === 0){
+                return <Login processLogin = {(pass) => this.processLogin(pass)} />
+            }
         }
 
         if(isLoading){

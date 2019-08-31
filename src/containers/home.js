@@ -8,6 +8,9 @@ import Categorymenu from '../components/categorymenu'
 import Bookmarkslist from '../components/bookmarkslist'
 import Search from './search'
 
+import {Grid} from 'semantic-ui-react'
+
+
 
 class Home extends Component {
 
@@ -32,13 +35,17 @@ class Home extends Component {
       }
 
      return (
-          <div>
-              <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/>
-              { search.length === 0  &&
-                <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
-              }
-              <Search/>
-          </div>
+          <Grid columns={2} >
+            <Grid.Row>
+                 <Grid.Column width={3}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/></Grid.Column>
+                <Grid.Column width={13}>
+                    { search.length === 0  &&
+                        <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
+                    }
+                    <Search/>
+               </Grid.Column>
+            </Grid.Row>
+          </Grid>
       );
   }
 }

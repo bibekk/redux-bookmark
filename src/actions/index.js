@@ -1,3 +1,5 @@
+export const ENV='uat'
+
 export const ADD_BOOKMARK ='ADD_BOOKMARK'
 export const ADD_BOOKMARK_SUCCESS='ADD_BOOKMARK_SUCCESS'
 export const EDIT_BOOKMARK = 'EDIT_BOOKMARK'
@@ -24,5 +26,14 @@ export const VALID = 'VALID'
 
 export const SEARCH_RESULT = 'SEARCH_RESULT'
 export const CLEAN_SEARCH = 'CLEAN_SEARCH'
-export const base_url =  'http://192.168.1.147:8080/bookmark'
+
+export const base_url = () =>  {
+    if(ENV === 'uat'){
+        return 'http://192.168.1.146:8080/bookmark'
+    }else{
+        return window.location.hostname + ":8080/bookmark"
+    }
+
+}
+//export const base_url =  'http://192.168.1.147:8080/bookmark'
 //'http://' + window.location.hostname + ":8080/bookmark"// 'http://localhost:8080/bookmark'  //

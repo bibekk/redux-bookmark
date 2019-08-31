@@ -58,7 +58,7 @@ export const fetchBMCat = () => {
     return (dispatch) => {
         //dispatch(itemsIsLoading(true))
 
-        fetch(base_url+'/category').then(response =>{
+        fetch(base_url()+'/category').then(response =>{
             if(!response.ok){
                 throw Error(response.statusText)
             }
@@ -76,7 +76,7 @@ export const addCat = (cat) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
             dispatch(createCategory(cat))
-            fetch( base_url +"/addCat",{
+            fetch( base_url() +"/addCat",{
                        method: 'post',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                        body: JSON.stringify({category: cat})
@@ -97,7 +97,7 @@ export const deleteCat = (cat_id) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
             dispatch(delCategory(cat_id))
-            fetch( base_url +"/category/"+cat_id,{
+            fetch( base_url() +"/category/"+cat_id,{
                        method: 'delete',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                    }).then( response => response.json() )
@@ -116,7 +116,7 @@ export const deleteCat = (cat_id) => {
 export const updateCat = (cat_id,category) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
-            fetch( base_url+'/updateCat',{
+            fetch( base_url()+'/updateCat',{
                        method: 'put',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                         body: JSON.stringify({category: category , cat_id: cat_id})

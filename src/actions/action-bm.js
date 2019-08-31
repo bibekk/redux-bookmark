@@ -113,7 +113,7 @@ export const addBookmark = (url, cat_id) => {
 export const fetchBMByCat = (cat_id) => {
     return (dispatch) => {
         //dispatch(itemsIsLoading(true))
-        fetch(base_url+'/getBookmarksByCategory/'+cat_id).then(response =>{
+        fetch(base_url()+'/getBookmarksByCategory/'+cat_id).then(response =>{
             if(!response.ok){
                 throw Error(response.statusText)
             }
@@ -129,7 +129,7 @@ export const fetchBMByCat = (cat_id) => {
 export const searchData= (text) => {
     return (dispatch) => {
         //dispatch(itemsIsLoading(true))
-        fetch(base_url+'/search?searchtext='+text).then(response =>{
+        fetch(base_url()+'/search?searchtext='+text).then(response =>{
             if(!response.ok){
                 throw Error(response.statusText)
             }
@@ -149,7 +149,7 @@ export const addBookmark = (url,cat_id) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
             dispatch(createBookmark(url))
-            fetch( base_url +"/addBookmark",{
+            fetch( base_url() +"/addBookmark",{
                        method: 'post',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                        body: JSON.stringify({url: url , cat_id: cat_id})
@@ -170,7 +170,7 @@ export const addBookmark = (url,cat_id) => {
 export const deleteBM = (id,cat_id) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
-            fetch( base_url+'/'+id,{
+            fetch( base_url() +'/'+id,{
                        method: 'delete',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                    }).then( response => response.json() )
@@ -190,7 +190,7 @@ export const deleteBM = (id,cat_id) => {
 export const updateBM = (id,url,cat_id) => {
         return (dispatch) => {
             //dispatch(itemsIsLoading(true))
-            fetch( base_url+'/updateBookmark',{
+            fetch( base_url() +'/updateBookmark',{
                        method: 'put',
                        headers: new Headers({ 'Content-Type': 'application/json'}),
                         body: JSON.stringify({url: url , cat_id: cat_id, id: id})
