@@ -26,6 +26,7 @@ export const VALID = 'VALID'
 
 export const SEARCH_RESULT = 'SEARCH_RESULT'
 export const CLEAN_SEARCH = 'CLEAN_SEARCH'
+<<<<<<< HEAD
 
 export const base_url = () =>  {
     if(ENV === 'uat'){
@@ -36,4 +37,9 @@ export const base_url = () =>  {
 
 }
 //export const base_url =  'http://192.168.1.147:8080/bookmark'
+=======
+export const base_url = 'http://localhost:8080/bookmark' //'http://192.168.1.147:8080/bookmark'
+>>>>>>> 7d86a0196f434963e3bd5f1fe303f29d579021a7
 //'http://' + window.location.hostname + ":8080/bookmark"// 'http://localhost:8080/bookmark'  //
+
+export const LOADING = 'LOADING'

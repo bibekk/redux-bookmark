@@ -1,4 +1,4 @@
-import { FETCH_TERMS_SUCCESS, ADD_TERM, DELETE_TERM,base_url, VALID} from './index'
+import { FETCH_TERMS_SUCCESS, ADD_TERM, DELETE_TERM,base_url, VALID, LOADING} from './index'
 import {itemsHasErrored} from './action-bm'
 
 export const fetchTermsFromDBSuccess = (items) =>{
@@ -85,12 +85,17 @@ export const deleteTermFromDB = (id) => {
 
 export const matchPass = (pass) => {
     return (dispatch) => {
+<<<<<<< HEAD
         //dispatch(itemsIsLoading(true))
         fetch(base_url() +'/getPass/'+ pass).then(response =>{
+=======
+        dispatch({type: LOADING, data: true})
+        fetch(base_url+'/getPass/'+ pass).then(response =>{
+>>>>>>> 7d86a0196f434963e3bd5f1fe303f29d579021a7
             if(!response.ok){
                 throw Error(response.statusText)
             }
-            //dispatch(itemsIsLoading(false))
+            dispatch({type: LOADING, data: false})
             return response
         })
         .then(response => response.json())
