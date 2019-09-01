@@ -35,7 +35,6 @@ class Home extends Component {
       }
 
      return (
-<<<<<<< HEAD
           <Grid columns={2} >
             <Grid.Row>
                  <Grid.Column width={3}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/></Grid.Column>
@@ -47,18 +46,6 @@ class Home extends Component {
                </Grid.Column>
             </Grid.Row>
           </Grid>
-=======
-          <>
-              <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/>
-              
-              { search.length === 0  &&
-                <div className='main-body'>
-                    <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
-                </div>
-              }
-              <Search/>
-          </>
->>>>>>> 7d86a0196f434963e3bd5f1fe303f29d579021a7
       );
   }
 }

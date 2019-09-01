@@ -13,7 +13,7 @@ class Bookmarkslist extends React.Component{
         return(
             <>
                 {_category !== "" &&
-                    <Label color='brown' attached>{_category}</Label>
+                    <Label color='brown' attached='top'>{_category}</Label>
                 }
                 <Table striped selectable compact='very' color='blue'>
                 <tbody>
