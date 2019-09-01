@@ -85,13 +85,8 @@ export const deleteTermFromDB = (id) => {
 
 export const matchPass = (pass) => {
     return (dispatch) => {
-<<<<<<< HEAD
-        //dispatch(itemsIsLoading(true))
-        fetch(base_url() +'/getPass/'+ pass).then(response =>{
-=======
         dispatch({type: LOADING, data: true})
-        fetch(base_url+'/getPass/'+ pass).then(response =>{
->>>>>>> 7d86a0196f434963e3bd5f1fe303f29d579021a7
+        fetch(base_url()+'/getPass/'+ pass).then(response =>{
             if(!response.ok){
                 throw Error(response.statusText)
             }

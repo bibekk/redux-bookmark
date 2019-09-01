@@ -31,15 +31,10 @@ class ItemList extends Component {
             )
         }
         
-<<<<<<< HEAD
         if(ENV !== 'uat'){
             if(isValidLogin === 0){
                 return <Login processLogin = {(pass) => this.processLogin(pass)} />
             }
-=======
-        if(isValidLogin === null ){
-            return <Login processLogin = {(pass) => this.processLogin(pass)} />
->>>>>>> 7d86a0196f434963e3bd5f1fe303f29d579021a7
         }
 
         if(isValidLogin === 0){
