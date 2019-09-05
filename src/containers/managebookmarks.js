@@ -28,7 +28,7 @@ class Managebookmarks extends Component {
           <div>
               <AddBookmark />
               <Divider />
-              <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} cancelEdit={this.props.cancelEdit} />
+             {/* <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} cancelEdit={this.props.cancelEdit} />*/}
           </div>
       );
   }

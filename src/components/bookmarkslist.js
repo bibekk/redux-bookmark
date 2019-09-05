@@ -13,9 +13,9 @@ class Bookmarkslist extends React.Component{
         return(
             <>
                 {_category !== "" &&
-                    <Label color='brown' attached='top'>{_category}</Label>
+                    <Label color='brown' tag>{_category}</Label>
                 }
-                <Table striped selectable compact='very' color='blue'>
+                <Table striped={true} compact='very' color='blue'>
                 <tbody>
                 {
                     this.props.items.map( item => {
