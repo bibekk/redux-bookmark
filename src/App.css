@@ -13,7 +13,9 @@ h2{
     color: #456;
 }
 
-
+table tr:nth-child(n){
+    background: rgba(204,204,204,0.63);
+}
 
 table td {
     max-width: 900px;

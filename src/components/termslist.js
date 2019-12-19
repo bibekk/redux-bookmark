@@ -12,7 +12,7 @@ class TermsList extends React.Component{
         }
         return(
             <>
-            <Table size='small' compact='very' color='grey'><Table.Body>
+            <Table size='small' striped compact='very' color='grey'><Table.Body>
             {
               data.map( v => (
                   <Table.Row key={v.id}>
