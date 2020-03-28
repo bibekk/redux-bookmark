@@ -17,7 +17,8 @@ class AddBookmark  extends React.Component {
     render () {
         let _cat = []
         this.props.categories.forEach((v,i) => {
-            _cat.push(<option key={i} value={v.cat_id}>{v.category}</option>)
+            _cat.push(<option key={i} className='cat_option' value={v.cat_id}>{v.category}</option>)
+           // _cat.push({key: i, text: v.category, value: v.cat_id})
         })
         return (
             <Form size='large'>
@@ -35,9 +36,19 @@ class AddBookmark  extends React.Component {
                 }
                                       
                 <Form.Group grouped>
-                 <Form.Select name='cat' control='select' size={this.props.categories.length}>
+                 <Form.Select name='cat' control='select'  size={this.props.categories.length} options={_cat}>
                      {_cat}
-                 </Form.Select>
+                </Form.Select>
+
+                {/* <Form.Field
+                    control={Select}
+                    options={_cat}
+                    label={{ children: 'Category', htmlFor: 'form-select-control-cat' }}
+                    placeholder='Category'
+                    search
+                    searchInput={{ id: 'form-select-control-cat' }}
+                />*/}
+
                </Form.Group>
              
             </Form>

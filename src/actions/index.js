@@ -1,4 +1,4 @@
-export const ENV='prd'
+export const ENV='uat'
 
 export const ADD_BOOKMARK ='ADD_BOOKMARK'
 export const ADD_BOOKMARK_SUCCESS='ADD_BOOKMARK_SUCCESS'
@@ -29,7 +29,7 @@ export const CLEAN_SEARCH = 'CLEAN_SEARCH'
 
 export const base_url = () =>  {
     if(ENV === 'uat'){
-        return 'http://192.168.1.146:8080/bookmark'
+        return 'http://'+window.location.hostname + ":8080/bookmark" //'http://192.168.1.146:8080/bookmark'
     }else{
         return 'http://'+window.location.hostname + ":8080/bookmark"
     }

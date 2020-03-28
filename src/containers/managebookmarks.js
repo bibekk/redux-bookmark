@@ -3,14 +3,14 @@ import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {fetchBMByCat, errorAfterFiveSeconds, deleteBM, editBM, cancelEdit} from '../actions/action-bm'
-import Bookmarkslist from '../components/bookmarkslist'
+//import Bookmarkslist from '../components/bookmarkslist'
 import AddBookmark from '../components/addbookmark'
 import { Divider} from 'semantic-ui-react'
 
 class Managebookmarks extends Component {
 
   render() {
-      const {items, isLoading, hasErrored}  = this.props
+      const { isLoading, hasErrored}  = this.props
 
       if(hasErrored){
           return (

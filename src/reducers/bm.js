@@ -70,6 +70,13 @@ export const activeMenu = (state = initialState, action) => {
     }
 }
 
+export const activeCategory = (state=[], action) => {
+    switch(action.type){
+        case ITEMS_FETCH_DATA_SUCCESS : return action.cat_id
+        default: return state
+    }
+}
+
 
 const editBookmarkReducer  =  (state, action) =>{
     let _bms =[]

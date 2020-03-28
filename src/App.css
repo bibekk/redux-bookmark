@@ -21,14 +21,13 @@ table td {
     max-width: 900px;
     overflow-y: hidden;
 }
-select option {
-    float: left;
-    width: 200px;
+
+div.grouped option {
+    width: 150px;
     border: 2px solid #60a1ec;
     box-shadow: 3px 1px 1px #ccc;
-    padding: 5px;
-    font-size: 15pt;
-    margin: 2px;
+    padding: 3px;
+    font-size: 12pt;
 }
 select option:hover {
     color: rgb(95,156,45);
@@ -36,7 +35,7 @@ select option:hover {
 }
 
 select {
-    max-height: 600px;
+    max-height: 1200px;
 }
 
 /* for categories*/
@@ -55,7 +54,6 @@ div.menu{
 
 div.vertical.menu{
     overflow-y: auto;
-    height: 1000px;
 }
 
 div.vertical.menu a {
@@ -63,7 +61,7 @@ div.vertical.menu a {
     margin: 2px;   
     border-radius: 3px;
     background: rgba(215,249,207,0.44)!important;
-    width: 196px;
+    width: auto;
     font-weight: bold!important;
 }
 

@@ -8,8 +8,8 @@ class Search extends Component {
 
 
   render() {
-      const {search, isLoading}  = this.props
-
+      const {search, isLoading, cat}  = this.props
+      //console.log("CAT",cat)
       if(isLoading){
           return(
               <div style={{backgroundColor: '#ebebeb',padding: '5px',border: '2px solid #333'}}>Searching...</div>
@@ -39,7 +39,7 @@ class Search extends Component {
         </Table>
       );*/
       return(
-        <Bookmarkslist items={search} search={true}/>
+        <Bookmarkslist items={search} search={true} cat={cat} searchText={search.searchtext}/>
       )
   }
 }
@@ -50,6 +50,7 @@ class Search extends Component {
 const mapStateToProps = (state) => {
     return {
         search: state.search,
+        cat: state.categories
     }
 }
 

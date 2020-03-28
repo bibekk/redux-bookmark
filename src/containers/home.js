@@ -20,7 +20,7 @@ class Home extends Component {
    }
 
   render() {
-      const {cat,fetchBMByCat,items, isLoading, hasErrored, search}  = this.props
+      const {cat,fetchBMByCat,items, isLoading, hasErrored, search, activeCategory}  = this.props
 
       if(hasErrored){
           return (
@@ -35,15 +35,16 @@ class Home extends Component {
       }
 
      return (
-          <Grid columns={2} >
+          <Grid columns={3} >
             <Grid.Row>
-                 <Grid.Column width={3}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat}/></Grid.Column>
-                <Grid.Column width={13}>
+                <Grid.Column width={3}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={true} activeCategory={activeCategory}/></Grid.Column>
+                <Grid.Column width={10}>
                     { search.length === 0  &&
-                        <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
+                        <Bookmarkslist cat={cat} items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
                     }
-                    <Search/>
+                    {search.length > 0  &&<Search/> }
                </Grid.Column>
+               <Grid.Column width={3}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={false} activeCategory={activeCategory}/></Grid.Column>
             </Grid.Row>
           </Grid>
       );
@@ -58,6 +59,7 @@ const mapStateToProps = (state) => {
         hasErrored: state.itemsHasErrored,
         isLoading: state.itemsIsLoading,
         cat: state.categories,
+        activeCategory: state.activeCategory
     }
 }
 

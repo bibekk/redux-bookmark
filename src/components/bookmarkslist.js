@@ -4,15 +4,17 @@ import {Table,Label,Button,Form} from 'semantic-ui-react'
 class Bookmarkslist extends React.Component{
 
     render(){
+        //console.log("CAT",this.props.cat)
         let _category  
         if(this.props.items.length > 0 ){
             _category = this.props.items[0].category
+            //console.log('_category', _category)
         }else{
             _category = ""
         }
         return(
             <>
-                {_category !== "" &&
+                {_category !== undefined && // !== "" &&
                     <Label color='brown' tag>{_category}</Label>
                 }
                 <Table striped={true} compact='very' color='blue'>
@@ -40,7 +42,10 @@ class Bookmarkslist extends React.Component{
 
                         if(this.props.search === true){
                             return(
-                                <tr key={item.id}><td><a href={item.url} target='_blank' rel='noopener noreferrer'>{item.url}</a></td><td></td>
+                            <tr key={item.id}>
+                                <td>
+                                    <a href={item.url} target='_blank' rel='noopener noreferrer'>{item.url}</a> </td>
+                                   <td><Label tag color='green'>{this.props.cat.filter( f=> f.cat_id === parseInt(item.cat_id))[0].category}</Label></td>
                                 <Table.Cell></Table.Cell><Table.Cell></Table.Cell>
                                 <Table.Cell></Table.Cell></tr>
                             )

@@ -49,10 +49,11 @@ export const itemsIsLoading =(bool) => {
     }
 }
 
-export const itemsFetchDataSuccess =(items) => {
+export const itemsFetchDataSuccess =(items, cat_id) => {
     return {
         type: ITEMS_FETCH_DATA_SUCCESS,
-        items
+        items: items,
+        cat_id : cat_id
     }
 }
 
@@ -121,7 +122,7 @@ export const fetchBMByCat = (cat_id) => {
             return response
         })
         .then(response => response.json())
-        .then(items => dispatch(itemsFetchDataSuccess(items)))
+        .then(items => dispatch(itemsFetchDataSuccess(items, cat_id)))
         .catch(()=> dispatch(itemsHasErrored(true)) )
     }
 }
@@ -139,7 +140,8 @@ export const searchData= (text) => {
         .then(response => response.json())
         .then(items => dispatch({
             type: SEARCH_RESULT,
-            data: items
+            data: items,
+            searchtext : text
         }))
         .catch(()=> dispatch(itemsHasErrored(true)) )
     }

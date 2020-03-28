@@ -5,6 +5,7 @@ class CategoryList extends React.Component{
 
     render(){
         const {categories} = this.props
+        
         return(
             <Table size='small' compact='very' color='teal'><Table.Body>
             {
@@ -25,8 +26,6 @@ class CategoryList extends React.Component{
         )
 
     }
-
-
 }
 
 

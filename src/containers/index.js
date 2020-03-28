@@ -61,7 +61,7 @@ class ItemList extends Component {
         }
 
         return (
-        <Container>
+        <Container >
             <Header />
             {_activeComp}
         </Container>
