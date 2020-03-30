@@ -22,7 +22,7 @@ class ItemList extends Component {
 
   render() {
         const {activeMenu, hasErrored, isLoading, isValidLogin}  = this.props
-        console.log(ENV,isValidLogin)
+        //console.log(ENV,isValidLogin)
         let _activeComp
 
         if(hasErrored){

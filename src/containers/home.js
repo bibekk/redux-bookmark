@@ -11,11 +11,8 @@ import AddBookmarks from '../components/addbookmark'
 import Managecat from './managecat'
 import Manageterms from './manageterms'
 
-
 import Search from './search'
-
 import {Grid, Button, Input} from 'semantic-ui-react'
-
 
 
 class Home extends Component {
@@ -59,7 +56,7 @@ class Home extends Component {
       }
 
      return (
-          <Grid columns={3} >
+          <Grid columns={3} relaxed>
             <Grid.Row>
                 <Grid.Column width ={16}>
                     <Button basic color='blue' onClick={()=> this.setState({openBM: true})}>Add</Button>
@@ -74,10 +71,10 @@ class Home extends Component {
                 <Manageterms open={this.state.openTerms} close={()=>this.setState({openTerms: false})} /> 
             </Grid.Row>
             <Grid.Row >
-                <Grid.Column width={3} stretched> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={true} activeCategory={activeCategory}/></Grid.Column>
-                <Grid.Column width={3} stretched> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={false} activeCategory={activeCategory}/></Grid.Column>
+                <Grid.Column width={2} relaxed={'true'}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={true} activeCategory={activeCategory}/></Grid.Column>
+                <Grid.Column width={2} relaxed={'true'}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={false} activeCategory={activeCategory}/></Grid.Column>
 
-                <Grid.Column width={10}>
+                <Grid.Column width={12}>
                     { search.length === 0  &&
                         <Bookmarkslist cat={cat} items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
                     }

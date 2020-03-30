@@ -42,33 +42,35 @@ select {
 table.teal tr {
     float: left;
     min-width: 200px;
+    border-radius: 5px;
+    margin:2px;
 }
+
 table.teal tr td:first-child {
     min-width: 100px;
 }
 
-/* home menu*/
-div.menu{
-    background: rgba(27,48,122,0.26)!important;
-}
+/* for categories */
 
+/* home menu*/
 div.vertical.menu{
     overflow-y: auto;
+    width: 120px!important;
 }
 
 div.vertical.menu a {
-    border: 1px solid #ccc!important;
-    margin: 1px;   
     border-radius: 3px;
-    background: rgba(215,249,207,0.44)!important;
-    width: auto;
+    background: rgba(207,231,249,0.85)!important;
     font-weight: bold!important;
 }
 
 div.vertical.menu .active.item {
-    background: rgba(169, 140, 90, 0.349)!important;
-    color: #fdfdfb;
+    background: rgba(110,156,190,0.75)!important;
+    color: #000;
+    border-right: 2px solid #000
 }
+/* home menu */
+
 /* for addbookmarks */
 
 ul.addbookmark_categories {

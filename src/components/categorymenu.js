@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu,Label} from 'semantic-ui-react'
+import {Menu} from 'semantic-ui-react'
 
 
 class Categorymenu extends React.Component{
@@ -37,7 +37,7 @@ class MenuV extends React.Component {
         _cat.map(c => (
            <Menu.Item key={c.cat_id} active = {c.cat_id === this.props.activeCategory} onClick={()=>this.handleItemClick(c.cat_id)}>
                {c.category}
-               <Label color='teal'>{c.total}</Label>
+        {/* <Label color='teal'>{c.total}</Label> */}
            </Menu.Item>
        ))
    )

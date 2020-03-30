@@ -1,26 +1,25 @@
-import React from 'react';
+import React,{createRef} from 'react';
 import {Form, Button, Container} from 'semantic-ui-react'
 
 
-class Login  extends React.Component {
-    submitTerm(pass){
-       this.props.processLogin(pass)
-    }
+function Login(props) {
+  let pass = createRef()
 
-    render () {
-        return (
-            <Container>
-            <br/><br/>
-            <Form>
-                  <Form.Field>
-                    <label>Login</label>
-                    <input placeholder='pass' ref='pass' type='password' />
-                  </Form.Field>
-                  <Button type='button' onClick={()=>this.submitTerm(this.refs.pass.value)}>Go</Button>
-               </Form>
-        </Container>
-       )
-    }
+  function submitTerm (pass) {
+      props.processLogin(pass.current.value)
+  }
+
+  return (
+    <Container>
+      <br/><br/>
+      <Form onSubmit={()=>submitTerm(pass)}>
+        <Form.Field>
+          <input placeholder='Code' ref={pass} type='password' />
+        </Form.Field>
+        <Button type='submit'>Go</Button>
+      </Form>
+    </Container>
+  )
 }
 
 
