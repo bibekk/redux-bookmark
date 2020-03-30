@@ -7,7 +7,7 @@ import AddTerm from './addterm'
 import {fetchTermsFromDB,deleteTermFromDB} from '../actions/action-terms'
 import TermsList from '../components/termslist'
 
-import {Divider} from 'semantic-ui-react'
+import {Divider, Modal} from 'semantic-ui-react'
 
 
 class Manageterms extends Component {
@@ -16,6 +16,11 @@ class Manageterms extends Component {
        this.props.fetchTermsFromDB()
       // this.props.fetchBMCat()
    }
+
+
+  onClose =() => {
+    this.props.close()
+  }
 
   render() {
       const {terms, isLoading, hasErrored }  = this.props
@@ -33,11 +38,16 @@ class Manageterms extends Component {
       }
 
      return (
-          <div>
-              <AddTerm />
-              <Divider />
-              <TermsList data={terms} deleteTerm={this.props.deleteTermFromDB}  />
-          </div>
+        <Modal open={this.props.open} size='tiny' closeIcon onClose={this.onClose}>
+        <Modal.Header>Manage Terms</Modal.Header>
+        <Modal.Content>
+            <Modal.Description>
+                <AddTerm />
+                <Divider />
+                <TermsList data={terms} deleteTerm={this.props.deleteTermFromDB}  />
+            </Modal.Description>
+        </Modal.Content>    
+    </Modal>   
       );
   }
 }

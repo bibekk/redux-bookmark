@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux'
 import {deleteCat,editCat,updateCat, cancelCatEdit} from '../actions/action-cat'
 import AddCategory from './addcat'
 import CategoryList from '../components/categorylist'
-import {Divider} from 'semantic-ui-react'
+import {Divider, Modal} from 'semantic-ui-react'
 
 
 class Managecat extends Component {
@@ -14,6 +14,10 @@ class Managecat extends Component {
       // this.props.fetchBMByCat(1)
       // this.props.fetchBMCat()
    }
+
+   onClose =() => {
+    this.props.close()
+  }
 
   render() {
       const {categories, isLoading, hasErrored}  = this.props
@@ -31,11 +35,16 @@ class Managecat extends Component {
       }
 
      return (
-          <div>
-              <AddCategory/>
-              <Divider />
-              <CategoryList categories={categories} deleteCat={this.props.deleteCat} editCat= {this.props.editCat} updateCat={this.props.updateCat} cancelCatEdit={this.props.cancelCatEdit} />
-          </div>
+        <Modal open={this.props.open} size='large' closeIcon onClose={this.onClose}>
+            <Modal.Header>Manage Category</Modal.Header>
+            <Modal.Content>
+                <Modal.Description>
+                <AddCategory/>
+                <Divider />
+                <CategoryList categories={categories} deleteCat={this.props.deleteCat} editCat= {this.props.editCat} updateCat={this.props.updateCat} cancelCatEdit={this.props.cancelCatEdit} />
+                </Modal.Description>
+            </Modal.Content>
+        </Modal>   
       );
   }
 }

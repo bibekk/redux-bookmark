@@ -58,7 +58,7 @@ div.vertical.menu{
 
 div.vertical.menu a {
     border: 1px solid #ccc!important;
-    margin: 2px;   
+    margin: 1px;   
     border-radius: 3px;
     background: rgba(215,249,207,0.44)!important;
     width: auto;
@@ -66,6 +66,35 @@ div.vertical.menu a {
 }
 
 div.vertical.menu .active.item {
-    background: rgba(52,189,234,0.77)!important;
+    background: rgba(169, 140, 90, 0.349)!important;
     color: #fdfdfb;
 }
+/* for addbookmarks */
+
+ul.addbookmark_categories {
+    list-style-type: none;
+    padding: 3px;
+    height: 220px;
+    width: 700px;
+}
+
+ul.addbookmark_categories li {
+    float: left;
+    padding: 3px;
+    min-width: 120px;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    margin: 1px;
+}
+ul.addbookmark_categories li:hover {
+    background: #ccc;
+    cursor: pointer;
+}
+
+li.active {
+    background: rgb(158, 181, 205);
+}
+
+
+
+/* end add bookmarks*/

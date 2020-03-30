@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux'
 import {fetchBMByCat, errorAfterFiveSeconds, deleteBM, editBM, cancelEdit} from '../actions/action-bm'
 //import Bookmarkslist from '../components/bookmarkslist'
 import AddBookmark from '../components/addbookmark'
-import { Divider} from 'semantic-ui-react'
 
 class Managebookmarks extends Component {
 
@@ -26,8 +25,7 @@ class Managebookmarks extends Component {
 
      return (
           <div>
-              <AddBookmark />
-              <Divider />
+              <AddBookmark show={true}/>
              {/* <Bookmarkslist items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} cancelEdit={this.props.cancelEdit} />*/}
           </div>
       );

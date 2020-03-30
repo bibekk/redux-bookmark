@@ -45,7 +45,7 @@ class Bookmarkslist extends React.Component{
                             <tr key={item.id}>
                                 <td>
                                     <a href={item.url} target='_blank' rel='noopener noreferrer'>{item.url}</a> </td>
-                                   <td><Label tag color='green'>{this.props.cat.filter( f=> f.cat_id === parseInt(item.cat_id))[0].category}</Label></td>
+                                   <td><Label tag color='grey'>{this.props.cat.filter( f=> f.cat_id === parseInt(item.cat_id))[0].category}</Label></td>
                                 <Table.Cell></Table.Cell><Table.Cell></Table.Cell>
                                 <Table.Cell></Table.Cell></tr>
                             )

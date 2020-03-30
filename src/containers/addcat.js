@@ -14,7 +14,6 @@ class AddCategory  extends React.Component {
         return (
             <Form>
                   <Form.Field>
-                    <label>Bookmark Category</label>
                     <input placeholder='Category' ref='cat' />
                   </Form.Field>
                   <Button type='submit' onClick={()=>this.submitCat(this.refs.cat.value)} color='brown'>Add</Button>

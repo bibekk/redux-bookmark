@@ -1,26 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import '../App.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {fetchBMCat} from '../actions/action-cat'
-import {deleteBM,fetchBMByCat, errorAfterFiveSeconds,editBM, updateBM, cancelEdit} from '../actions/action-bm'
+import {deleteBM,fetchBMByCat, errorAfterFiveSeconds,editBM, updateBM, cancelEdit, searchData, cleanSearch} from '../actions/action-bm'
 import Categorymenu from '../components/categorymenu'
 import Bookmarkslist from '../components/bookmarkslist'
+
+import AddBookmarks from '../components/addbookmark'
+import Managecat from './managecat'
+import Manageterms from './manageterms'
+
+
 import Search from './search'
 
-import {Grid} from 'semantic-ui-react'
+import {Grid, Button, Input} from 'semantic-ui-react'
 
 
 
 class Home extends Component {
-
+   state = {openBM: false, openCat: false, openTerms: false, searchText: ''}
+   searchRef = createRef()
    componentDidMount(){
        this.props.fetchBMByCat(34)
        this.props.fetchBMCat()
    }
 
+   clearSearch = () => {
+    this.setState({searchText: ''})
+    this.props.cleanSearch()
+    document.querySelector('input').value = ''
+  }
+
+  search  = (e,v) => {
+    this.setState({searchText: v.value})
+    if(v.value.length > 2){
+      this.props.searchData(v.value)
+    }
+    if(v.value.length === 0){
+      this.props.cleanSearch()
+    }
+  }
+
   render() {
       const {cat,fetchBMByCat,items, isLoading, hasErrored, search, activeCategory}  = this.props
+      const {searchText} = this.state
 
       if(hasErrored){
           return (
@@ -37,14 +61,28 @@ class Home extends Component {
      return (
           <Grid columns={3} >
             <Grid.Row>
-                <Grid.Column width={3}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={true} activeCategory={activeCategory}/></Grid.Column>
+                <Grid.Column width ={16}>
+                    <Button basic color='blue' onClick={()=> this.setState({openBM: true})}>Add</Button>
+                    <Button basic color='blue' onClick={()=> this.setState({openCat: true})}>Category</Button>
+                    <Button basic color='blue' onClick={()=> this.setState({openTerms: true})}>Terms</Button>
+                    <Input icon='search' placeholder='Search Text' onChange={this.search} ref={this.searchRef}  />
+                    &nbsp;
+                    {searchText !== '' ?<Button basic color ='green' onClick={this.clearSearch}>Clear</Button>: null}
+                </Grid.Column>
+                <AddBookmarks open={this.state.openBM} close={()=>this.setState({openBM: false})} /> 
+                <Managecat open={this.state.openCat} close={()=>this.setState({openCat: false})} /> 
+                <Manageterms open={this.state.openTerms} close={()=>this.setState({openTerms: false})} /> 
+            </Grid.Row>
+            <Grid.Row >
+                <Grid.Column width={3} stretched> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={true} activeCategory={activeCategory}/></Grid.Column>
+                <Grid.Column width={3} stretched> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={false} activeCategory={activeCategory}/></Grid.Column>
+
                 <Grid.Column width={10}>
                     { search.length === 0  &&
                         <Bookmarkslist cat={cat} items={items} deleteBM={this.props.deleteBM} editBM={this.props.editBM} updateBM={this.props.updateBM} cancelEdit={this.props.cancelEdit} />
                     }
                     {search.length > 0  &&<Search/> }
                </Grid.Column>
-               <Grid.Column width={3}> <Categorymenu data ={cat} filterBlogCallback={fetchBMByCat} firsthalf={false} activeCategory={activeCategory}/></Grid.Column>
             </Grid.Row>
           </Grid>
       );
@@ -73,7 +111,9 @@ const mapDispatchToProps = (dispatch) => {
             deleteBM: (id,cat_id) => deleteBM(id,cat_id),
             editBM: (id) => editBM(id),
             cancelEdit: (id) => cancelEdit(id),
-            updateBM: (id,url,cat_id) => updateBM(id,url,cat_id)
+            updateBM: (id,url,cat_id) => updateBM(id,url,cat_id),
+            searchData: (text) => searchData(text),
+            cleanSearch: cleanSearch,
         }, dispatch
     )
 }

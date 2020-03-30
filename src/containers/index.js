@@ -6,7 +6,7 @@ import {fetchBMByCat, errorAfterFiveSeconds} from '../actions/action-bm'
 import {matchPass} from '../actions/action-terms'
 import {ENV} from '../actions'
 import {fetchBMCat} from '../actions/action-cat'
-import Header from '../components/header'
+//import Header from '../components/header'
 import Home from './home'
 import Managebookmarks from './managebookmarks'
 import Manageterms from './manageterms'
@@ -62,7 +62,8 @@ class ItemList extends Component {
 
         return (
         <Container >
-            <Header />
+          {/*  <Header />*/}
+            <h2>Bookmarks</h2>
             {_activeComp}
         </Container>
         );
