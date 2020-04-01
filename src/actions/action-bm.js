@@ -112,6 +112,18 @@ export const addBookmark = (url, cat_id) => {
 }*/
 
 export const fetchBMByCat = (cat_id) => {
+    return async dispatch => {
+        try{
+            const pass1 = await fetch(`${base_url()}/getBookmarksByCategory/${cat_id}`)
+            const items = await pass1.json()
+            dispatch(itemsFetchDataSuccess(items, cat_id))
+        }catch(err){ 
+            dispatch(itemsHasErrored(true))
+        }
+    }
+}
+
+/* export const fetchBMByCat = (cat_id) => {
     return (dispatch) => {
         //dispatch(itemsIsLoading(true))
         fetch(base_url()+'/getBookmarksByCategory/'+cat_id).then(response =>{
@@ -125,7 +137,7 @@ export const fetchBMByCat = (cat_id) => {
         .then(items => dispatch(itemsFetchDataSuccess(items, cat_id)))
         .catch(()=> dispatch(itemsHasErrored(true)) )
     }
-}
+} */
 
 export const searchData= (text) => {
     return (dispatch) => {

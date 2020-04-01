@@ -1,44 +1,24 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import { useDispatch} from 'react-redux'
 import {addCat} from '../actions/action-cat'
 import {Form, Button} from 'semantic-ui-react'
 
-class AddCategory  extends React.Component {
-    submitCat(cat){
-        this.props.addCat(cat);
-        //this.props.setActiveMenu('Categories')
+export const  AddCategory = props =>  {
+    let cat = React.createRef()
+    const dispatch = useDispatch()
+
+    const submitCat = (cat)=>{
+        dispatch(()=> dispatch(addCat(cat)))
     }
 
-    render () {
-        return (
-            <Form>
-                  <Form.Field>
-                    <input placeholder='Category' ref='cat' />
-                  </Form.Field>
-                  <Button type='submit' onClick={()=>this.submitCat(this.refs.cat.value)} color='brown'>Add</Button>
-               </Form>
-       )
-    }
-}
-
-
-const mapStateToProps = (state) => {
-    return {
-        hasErrored: state.itemsHasErrored,
-        isLoading: state.itemsIsLoading,
-    }
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(
-        {
-            addCat : (cat) => addCat(cat),
-        }, dispatch
+    return (
+        <Form>
+            <Form.Field>
+                <input placeholder='Category' ref={cat} autoFocus/>
+            </Form.Field>
+            <Button type='submit' onClick={()=>submitCat(cat.current.value)} color='brown'>Add</Button>
+        </Form>
     )
 }
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddCategory)
+export default AddCategory

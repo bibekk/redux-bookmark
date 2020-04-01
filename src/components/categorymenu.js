@@ -3,9 +3,12 @@ import {Menu} from 'semantic-ui-react'
 
 
 class Categorymenu extends React.Component{
+    
       render(){ //console.log("active cat: ", this.props.activeCategory)
+         const {firsthalf} = this.props
+
           return (
-              <Menu  vertical size='tiny'><MenuV data = {this.props.data} filterBlogCallback={this.props.filterBlogCallback} firsthalf={this.props.firsthalf}  activeCategory={this.props.activeCategory}/></Menu>
+              <Menu className={firsthalf?'firsthalf':'secondhalf'} vertical size='tiny'><MenuV data = {this.props.data} filterBlogCallback={this.props.filterBlogCallback} firsthalf={firsthalf}  activeCategory={this.props.activeCategory}/></Menu>
              // this.props.data.map(c => (
                 // <li key={c.cat_id} onClick={()=>this.props.filterBlogCallback(c.cat_id)}>{c.category} ({c.total})</li>
               //))

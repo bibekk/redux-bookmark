@@ -17,7 +17,7 @@ class TermsList extends React.Component{
               data.map( v => (
                   <Table.Row key={v.id}>
                       <Table.Cell>{v.term}</Table.Cell>
-                      <Table.Cell><Button icon='delete' color='red' onClick={()=> { if( window.confirm('Are you sure you wish to delete this term?')) this.props.deleteTerm(v.id) }}/></Table.Cell></Table.Row>
+                      <Table.Cell><Button basic icon='delete' color='red' onClick={()=> { if( window.confirm('Are you sure you wish to delete this term?')) this.props.deleteTerm(v.id) }}/></Table.Cell></Table.Row>
               ))
             }
             </Table.Body></Table>

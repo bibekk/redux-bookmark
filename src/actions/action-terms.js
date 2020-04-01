@@ -22,7 +22,19 @@ export const deleteTerm = (cat_id) =>{
     }
 }
 
-export const fetchTermsFromDB = () => {
+export  const fetchTermsFromDB = () => {
+    return async dispatch => {
+        try{
+        const pass1 = await fetch(base_url() +'/terms')
+        const terms = await pass1.json()
+        dispatch(fetchTermsFromDBSuccess(terms))
+        }catch (err) {
+            dispatch(itemsHasErrored(true))
+        }
+    }
+}
+/* 
+export const fetchTermsFromDB2 = () => {
     return (dispatch) => {
         //dispatch(itemsIsLoading(true))
 
@@ -38,7 +50,7 @@ export const fetchTermsFromDB = () => {
         .then(items => dispatch(fetchTermsFromDBSuccess(items)))
         .catch(()=> dispatch(itemsHasErrored(true)) )
     }
-}
+} */
 
 export const addTermToDB = (term) => {
         return (dispatch) => {

@@ -27,7 +27,7 @@ function AddBookmark(props){
                 <Modal.Description>
                     <Form >
                         <Form.Field>
-                            <input placeholder='URL' ref={URL} />
+                            <input placeholder='URL' ref={URL} autoFocus />
                         </Form.Field>
 
                         <Button type='submit' onClick={()=>submitBookmark(URL.current.value, cat_id)} color='brown'>Add</Button>

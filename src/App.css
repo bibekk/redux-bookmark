@@ -14,7 +14,7 @@ h2{
 }
 
 table tr:nth-child(n){
-    background: rgba(204,204,204,0.63);
+    background: rgba(204, 204, 204, 0.249);
 }
 
 table td {
@@ -37,7 +37,19 @@ select option:hover {
 select {
     max-height: 1200px;
 }
-
+/* main */
+div.main {
+    margin-left: -50px;
+}
+div.main td a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(17, 17, 17, 0.625);
+    font-size: 11pt;
+}
+div.main td a:hover{
+    color: #2870c2;
+  }
+/* main */
 /* for categories*/
 table.teal tr {
     float: left;
@@ -53,22 +65,36 @@ table.teal tr td:first-child {
 /* for categories */
 
 /* home menu*/
-div.vertical.menu{
+div.vertical.menu {
     overflow-y: auto;
-    width: 120px!important;
+    width: 100px!important;
+}
+
+div.vertical.menu.secondhalf{
+    margin-left: -30px!important;
 }
 
 div.vertical.menu a {
     border-radius: 3px;
-    background: rgba(207,231,249,0.85)!important;
+    background: rgba(231,242,250,0.74)!important;
     font-weight: bold!important;
+}
+
+div.vertical.menu a:hover {
+    background: rgba(110,156,190,0.43)!important;
 }
 
 div.vertical.menu .active.item {
     background: rgba(110,156,190,0.75)!important;
-    color: #000;
-    border-right: 2px solid #000
+    color: #ffffff;
 }
+
+div.vertical.menu .active.item:hover {
+    color: #fff!important;
+    cursor: default;
+}
+
+
 /* home menu */
 
 /* for addbookmarks */

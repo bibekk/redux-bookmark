@@ -1,19 +1,17 @@
 import React from 'react';
 import '../App.css';
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {deleteCat,editCat,updateCat, cancelCatEdit} from '../actions/action-cat'
 import AddCategory from './addcat'
 import CategoryList from '../components/categorylist'
 import {Divider, Modal} from 'semantic-ui-react'
 
 
-function Managecat(props) {
-   function onClose(){
-        props.close()
-   }
-
-    const {categories, isLoading, hasErrored}  = props
+const Managecat = (props)=> {
+    const categories = useSelector(state => state.categories)
+    const isLoading = useSelector(state => state.itemsIsLoading)
+    const hasErrored  = useSelector(state=> state.itemsHasErrored)
+    const dispatch = useDispatch()
 
     if(hasErrored){
         return (
@@ -28,40 +26,19 @@ function Managecat(props) {
     }
 
     return (
-    <Modal open={props.open} size='large' closeIcon onClose={onClose}>
+    <Modal open={props.open} size='large' closeIcon onClose={props.close}>
         <Modal.Header>Manage Category</Modal.Header>
         <Modal.Content>
             <Modal.Description>
             <AddCategory/>
             <Divider />
-            <CategoryList categories={categories} deleteCat={props.deleteCat} editCat= {props.editCat} updateCat={props.updateCat} cancelCatEdit={props.cancelCatEdit} />
+            <CategoryList categories={categories} deleteCat={(id)=>dispatch(deleteCat(id))} 
+                editCat= {(id)=>dispatch(editCat(id))} updateCat={(id,cat)=>dispatch(updateCat(id,cat))} 
+                cancelCatEdit={(id)=>dispatch(cancelCatEdit(id))} />
             </Modal.Description>
         </Modal.Content>
     </Modal>   
     );
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        categories: state.categories,
-        hasErrored: state.itemsHasErrored,
-        isLoading: state.itemsIsLoading,
-    }
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(
-        {
-            deleteCat : (cat_id)=> deleteCat(cat_id),
-            editCat: (cat_id) => editCat(cat_id),
-            updateCat: (cat_id,category) => updateCat(cat_id,category),
-            cancelCatEdit: (cat_id) => cancelCatEdit(cat_id)
-        }, dispatch
-    )
-}
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Managecat)
+export default Managecat

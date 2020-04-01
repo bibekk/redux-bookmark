@@ -4,32 +4,30 @@ import {bindActionCreators} from 'redux'
 import {addTermToDB} from '../actions/action-terms'
 import {Form, Button} from 'semantic-ui-react'
 
-class AddTerm  extends React.Component {
-    submitTerm(term){
-        this.props.addTerm(term);
+function AddTerm(props){
+    let term = React.createRef()
+    //const hasLoading = useSelector(state =>state.itemsIsLoading)
+    function submitTerm(term){
+        props.addTerm(term);
         //this.props.setActiveMenu('Categories')
     }
 
-    render () {
-        return (
-            <Form>
-                  <Form.Field>
-                    <label>Bookmark Term</label>
-                    <input placeholder='Term' ref='term' />
-                  </Form.Field>
-                  <Button type='submit' onClick={()=>this.submitTerm(this.refs.term.value)} color='brown'>Add</Button>
-               </Form>
-       )
-    }
+    return (
+        <Form>
+            <Form.Field>
+            <label>Bookmark Term</label>
+            <input placeholder='Term' ref={term} autoFocus />
+            </Form.Field>
+            <Button type='submit' onClick={()=>submitTerm(term.current.value)} color='brown'>Add</Button>
+        </Form>
+    )
 }
 
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => ({
         hasErrored: state.itemsHasErrored,
         isLoading: state.itemsIsLoading,
-    }
-}
+})
 
 
 const mapDispatchToProps = (dispatch) => {

@@ -59,9 +59,12 @@ class Home extends Component {
           <Grid columns={3} relaxed>
             <Grid.Row>
                 <Grid.Column width ={16}>
-                    <Button basic color='blue' onClick={()=> this.setState({openBM: true})}>Add</Button>
-                    <Button basic color='blue' onClick={()=> this.setState({openCat: true})}>Category</Button>
-                    <Button basic color='blue' onClick={()=> this.setState({openTerms: true})}>Terms</Button>
+                    <Button.Group basic >
+                        <Button icon='add'  onClick={()=> this.setState({openBM: true})} content='Add' />
+                        <Button icon='list alternate outline' onClick={()=> this.setState({openCat: true})} content='Category'/>
+                        <Button icon='clipboard list'  onClick={()=> this.setState({openTerms: true})} content='Terms'/>
+                    </Button.Group>
+                    &nbsp;
                     <Input icon='search' placeholder='Search Text' onChange={this.search} ref={this.searchRef}  />
                     &nbsp;
                     {searchText !== '' ?<Button basic color ='green' onClick={this.clearSearch}>Clear</Button>: null}
