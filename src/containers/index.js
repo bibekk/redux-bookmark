@@ -11,7 +11,7 @@ import Home from './home'
 import Managebookmarks from './managebookmarks'
 import Manageterms from './manageterms'
 import Managecat from './managecat'
-import {Container} from 'semantic-ui-react'
+import {Container, Icon} from 'semantic-ui-react'
 import Login from './login'
 class ItemList extends Component {
       
@@ -33,7 +33,7 @@ class ItemList extends Component {
         
         if(ENV !== 'uat'){
             if(isValidLogin === 0 || isValidLogin === null){
-                return <Login processLogin = {(pass) => this.processLogin(pass)} />
+                return <Login processLogin = {(pass) => this.processLogin(pass)} isValidLogin={isValidLogin} />
             }
         }
 
@@ -63,7 +63,7 @@ class ItemList extends Component {
         return (
         <Container >
           {/*  <Header />*/}
-            <h2>Bookmarks</h2>
+            <h2><Icon name='bookmark outline' size='small'></Icon>Bookmarks</h2>
             {_activeComp}
         </Container>
         );

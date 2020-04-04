@@ -1,4 +1,4 @@
-export const ENV='uat'
+export const ENV='prod'
 
 export const ADD_BOOKMARK ='ADD_BOOKMARK'
 export const ADD_BOOKMARK_SUCCESS='ADD_BOOKMARK_SUCCESS'

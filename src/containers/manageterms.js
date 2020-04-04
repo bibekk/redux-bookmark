@@ -7,7 +7,7 @@ import AddTerm from './addterm'
 import {fetchTermsFromDB,deleteTermFromDB} from '../actions/action-terms'
 import TermsList from '../components/termslist'
 
-import {Divider, Modal} from 'semantic-ui-react'
+import {Divider, Modal, Header} from 'semantic-ui-react'
 
 
 class Manageterms extends Component {
@@ -39,7 +39,7 @@ class Manageterms extends Component {
 
      return (
         <Modal open={this.props.open} size='tiny' closeIcon onClose={this.onClose}>
-        <Modal.Header>Manage Terms</Modal.Header>
+        <Header icon='clipboard list'  content='Manage Terms'/>
         <Modal.Content>
             <Modal.Description>
                 <AddTerm />

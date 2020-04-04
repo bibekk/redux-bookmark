@@ -15,7 +15,6 @@ function AddTerm(props){
     return (
         <Form>
             <Form.Field>
-            <label>Bookmark Term</label>
             <input placeholder='Term' ref={term} autoFocus />
             </Form.Field>
             <Button type='submit' onClick={()=>submitTerm(term.current.value)} color='brown'>Add</Button>

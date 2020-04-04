@@ -1,9 +1,20 @@
-import React from 'react'
-import {Table,Label,Button,Form} from 'semantic-ui-react'
+import React,{useState} from 'react'
+import {Table,Label,Button,Form, Confirm} from 'semantic-ui-react'
 
 function Bookmarkslist(props){
     let _category  
     _category = props.items.length > 0? props.items[0].category: ""
+
+    const [showConfirm, setConfirm] = useState(false)
+    const [itemid, setItemID] = useState(null)
+    const [cat_id, setCatID] = useState(null)
+    const [bmtitle, setBmtitle] = useState(null)
+
+
+    const _deleteBookmark =( )=>{
+        props.deleteBM(itemid,cat_id)
+        setConfirm(false)
+    }
     
     return(
         <div className='main'>
@@ -22,7 +33,9 @@ function Bookmarkslist(props){
                             <Table.Row key={item.id}>
                                 <Table.Cell><a href={item.url} target='_blank' rel='noopener noreferrer'>{item.url}</a></Table.Cell>
                                 <Table.Cell></Table.Cell>
-                                    <Table.Cell textAlign='right'><Button icon='delete' basic color='red' onClick={()=> { if( window.confirm('Are you sure you wish to delete this bookmark?')) props.deleteBM(item.id, item.cat_id) }}/></Table.Cell>
+                                    <Table.Cell textAlign='right'>
+                                        <Button icon='delete' as='div' basic color='red' onClick={()=>{setConfirm(true);setItemID(item.id);setCatID(item.cat_id); setBmtitle(item.url)}}/>
+                                    </Table.Cell>
                                     <Table.Cell textAlign='right'><Button icon='edit' basic color='blue' onClick={()=>props.editBM(item.id)}/></Table.Cell>
                             </Table.Row>
                         )
@@ -52,6 +65,14 @@ function Bookmarkslist(props){
             }
             </Table.Body>
             </Table>
+            <Confirm
+                open={showConfirm}
+                content={`Are you sure you want to delete "${bmtitle}"?`}
+                onCancel={()=>setConfirm(false)}
+                onConfirm={_deleteBookmark}
+                cancelButton='Cancel'
+                confirmButton='Yes'
+            />
         </div>
     )
 }

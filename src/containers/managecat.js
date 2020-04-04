@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {deleteCat,editCat,updateCat, cancelCatEdit} from '../actions/action-cat'
 import AddCategory from './addcat'
 import CategoryList from '../components/categorylist'
-import {Divider, Modal} from 'semantic-ui-react'
+import {Divider, Modal, Header} from 'semantic-ui-react'
 
 
 const Managecat = (props)=> {
@@ -27,7 +27,7 @@ const Managecat = (props)=> {
 
     return (
     <Modal open={props.open} size='large' closeIcon onClose={props.close}>
-        <Modal.Header>Manage Category</Modal.Header>
+        <Header icon='list alternate outline' content='Manage Category'/>
         <Modal.Content>
             <Modal.Description>
             <AddCategory/>

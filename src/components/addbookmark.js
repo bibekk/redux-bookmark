@@ -2,7 +2,7 @@ import React ,{useState} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import { addBookmark, createBookmark, bookmarksAddedSetOff} from '../actions/action-bm'
-import {Form, Button, Message, Modal} from 'semantic-ui-react'
+import {Form, Button, Message, Modal, Header} from 'semantic-ui-react'
 
 function AddBookmark(props){
     const [cat_id,setCatID] = useState(null)
@@ -22,7 +22,7 @@ function AddBookmark(props){
     })
     return (
         <Modal open={props.open} size='small' closeIcon onClose={props.close}>
-            <Modal.Header>Add Bookmark</Modal.Header>
+            <Header icon='add' content='Add Bookmark'/>
             <Modal.Content>
                 <Modal.Description>
                     <Form >
