@@ -12,6 +12,15 @@ h2{
     margin-left: 2rem;
     color: #456;
 }
+/* Login */
+div.login-form {
+    margin-top: 10%;
+    width: 20%!important;
+    border: 1px solid rgba(204,204,204,0.35);
+    padding: 15pt;
+    height: 130pt;
+}
+/* Login*/
 
 table tr:nth-child(n){
     background: rgba(204, 204, 204, 0.249);
@@ -102,7 +111,6 @@ div.vertical.menu .active.item:hover {
 ul.addbookmark_categories {
     list-style-type: none;
     padding: 3px;
-    height: 220px;
     width: 700px;
 }
 

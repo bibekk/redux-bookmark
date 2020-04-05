@@ -20,6 +20,7 @@ function AddBookmark(props){
         // _cat.push({key: i, text: v.category, value: v.cat_id})
         _catinput.push(<li key={i} className={ cat_id === v.cat_id? 'active': null}  onClick={()=>setCatID(v.cat_id)}>{v.category}</li>)
     })
+    
     return (
         <Modal open={props.open} size='small' closeIcon onClose={props.close}>
             <Header icon='add' content='Add Bookmark'/>

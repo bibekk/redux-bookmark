@@ -1,7 +1,6 @@
 import React,{createRef, useEffect, useState} from 'react';
 import {Form, Container, Message} from 'semantic-ui-react'
 
-
 function Login(props) {
   let pass = createRef()
   const [errorMessage, setErrorMessage] = useState(false)
@@ -20,21 +19,19 @@ function Login(props) {
       props.processLogin(pass.current.value)
   }
 
-
   return (
-    <Container>
-      <br/><br/>
-      {  props.isValidLogin === 0 && errorMessage === false &&
-            <Message hidden={errorMessage} compact error content='Invalid Login'/>
-      }
+    <Container className='login-form'>
+      <h3>Login</h3>
       <Form onSubmit={()=>submitTerm(pass)}>
         <Form.Field>
-          <input placeholder='Code' ref={pass} type='password' autoFocus />
+          <input placeholder='Code' ref={pass} type='password' autoFocus  size='20'/>
         </Form.Field>
       </Form>
+      { props.isValidLogin === 0 && errorMessage === false &&
+          <Message hidden={errorMessage}  error content='Invalid Login'/>
+      }
     </Container>
   )
 }
-
 
 export default Login;
