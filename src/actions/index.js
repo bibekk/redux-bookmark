@@ -28,11 +28,11 @@ export const SEARCH_RESULT = 'SEARCH_RESULT'
 export const CLEAN_SEARCH = 'CLEAN_SEARCH'
 
 export const base_url = () =>  {
-    if(ENV === 'uat'){
-        return 'http://'+window.location.hostname + ":8080/bookmark" //'http://192.168.1.146:8080/bookmark'
-    }else{
-        return 'http://'+window.location.hostname + ":8080/bookmark"
-    }
+  if(ENV === 'uat'){
+    return 'http://'+window.location.hostname + ":8080/bookmark" //'http://192.168.1.146:8080/bookmark'
+  }else{
+    return 'http://'+window.location.hostname + ":8080/bookmark"
+  }
 
 }
 //export const base_url =  'http://192.168.1.147:8080/bookmark'

@@ -9,7 +9,7 @@ import {Divider, Modal, Header} from 'semantic-ui-react'
 
 const Managecat = (props)=> {
     const categories = useSelector(state => state.categories)
-    const isLoading = useSelector(state => state.itemsIsLoading)
+    //const isLoading = useSelector(state => state.itemsIsLoading)
     const hasErrored  = useSelector(state=> state.itemsHasErrored)
     const dispatch = useDispatch()
 
@@ -19,11 +19,11 @@ const Managecat = (props)=> {
         )
     }
 
-    if(isLoading){
+   /*  if(isLoading){
         return(
             <div style={{backgroundColor: '#ebebeb',padding: '5px',border: '2px solid #333'}}>Loading...</div>
         )
-    }
+    } */
 
     return (
     <Modal open={props.open} size='large' closeIcon onClose={props.close}>

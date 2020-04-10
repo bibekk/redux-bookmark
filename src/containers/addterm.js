@@ -14,10 +14,14 @@ function AddTerm(props){
 
     return (
         <Form>
-            <Form.Field>
-            <input placeholder='Term' ref={term} autoFocus />
-            </Form.Field>
-            <Button type='submit' onClick={()=>submitTerm(term.current.value)} color='brown'>Add</Button>
+            <Form.Group>
+                <Form.Field>
+                    <input placeholder='Term' ref={term} autoFocus size='100' />
+                </Form.Field>
+                <Form.Field>
+                    <Button type='submit' onClick={()=>submitTerm(term.current.value)} color='brown'>Add</Button>
+                </Form.Field>
+            </Form.Group>
         </Form>
     )
 }
