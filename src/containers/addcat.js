@@ -8,7 +8,11 @@ export const  AddCategory = props =>  {
   const dispatch = useDispatch()
 
   const submitCat = (cat)=>{
-    dispatch(()=> dispatch(addCat(cat)))
+    if(cat === ''){
+      alert("Category cannot be empty!")
+      return
+    }
+    dispatch(addCat(cat))
   }
 
   return (

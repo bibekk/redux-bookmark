@@ -1,15 +1,14 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import { useDispatch} from 'react-redux'
 import {addTermToDB} from '../actions/action-terms'
 import {Form, Button} from 'semantic-ui-react'
 
 function AddTerm(props){
     let term = React.createRef()
-    //const hasLoading = useSelector(state =>state.itemsIsLoading)
+    const dispatch = useDispatch()
+
     function submitTerm(term){
-        props.addTerm(term);
-        //this.props.setActiveMenu('Categories')
+        dispatch(addTermToDB(term))
     }
 
     return (
@@ -27,20 +26,4 @@ function AddTerm(props){
 }
 
 
-const mapStateToProps = (state) => ({
-        hasErrored: state.itemsHasErrored,
-        isLoading: state.itemsIsLoading,
-})
-
-
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(
-        {
-            addTerm : (term) => addTermToDB(term),
-        }, dispatch
-    )
-}
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddTerm)
+export default AddTerm
