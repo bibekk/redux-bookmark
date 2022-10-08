@@ -3,7 +3,7 @@ import "../App.css"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { fetchBMCat } from "../actions/action-cat"
-import { deleteBM, fetchBMByCat,fetchCategoryHierarchy, errorAfterFiveSeconds, editBM, updateBM, cancelEdit, searchData, cleanSearch } from "../actions/action-bm"
+import { deleteBM, fetchBMByCat, errorAfterFiveSeconds, editBM, updateBM, cancelEdit, searchData, cleanSearch } from "../actions/action-bm"
 import { fetchTermsFromDB } from "../actions/action-terms"
 
 import Categorymenu from "../components/categorymenu"
@@ -22,9 +22,7 @@ const Home = (props) => {
     fetchBMByCat,
     fetchBMCat,
     fetchTermsFromDB,
-    fetchCategoryHierarchy,
     items,
-    cat_heir,
     search,
     activeCategory,
     deleteBM,
@@ -44,8 +42,7 @@ const Home = (props) => {
     fetchBMByCat()
     fetchBMCat()
     fetchTermsFromDB()
-    fetchCategoryHierarchy()
-  }, [fetchBMByCat, fetchBMCat, fetchTermsFromDB, fetchCategoryHierarchy])
+  }, [fetchBMByCat, fetchBMCat, fetchTermsFromDB])
 
   const clearSearch = () => {
     setSearchText("")
@@ -114,7 +111,6 @@ const Home = (props) => {
       <Grid.Row>
         <Grid.Column width={1}>
           <Categorymenu
-            cat_heir={cat_heir}
             data={cat}
             filterBlogCallback={fetchBMByCat}
             rank={'first'}
@@ -124,7 +120,7 @@ const Home = (props) => {
         </Grid.Column>
         <Grid.Column width={1}>
           <Categorymenu
-            cat_heir={cat_heir}
+            
             data={cat}
             filterBlogCallback={fetchBMByCat}
             rank={'second'}
@@ -148,7 +144,7 @@ const Home = (props) => {
         </Grid.Column>
         <Grid.Column width={1}>
           <Categorymenu
-            cat_heir={cat_heir}
+            
             data={cat}
             filterBlogCallback={fetchBMByCat}
             rank={'third'}
@@ -158,7 +154,7 @@ const Home = (props) => {
         </Grid.Column>
         <Grid.Column width={1}>
           <Categorymenu
-            cat_heir={cat_heir}
+            
             data={cat}
             filterBlogCallback={fetchBMByCat}
             rank={'fourth'}
@@ -177,7 +173,7 @@ const mapStateToProps = (state) => {
     items: state.items,
     hasErrored: state.itemsHasErrored,
     isLoading: state.itemsIsLoading,
-    cat: state.categories.filter((f) => f.parent_cat_id === null),
+    cat: state.categories,//.filter((f) => f.parent_cat_id === null),
     activeCategory: state.activeCategory,
     cat_heir: state.cat_heir
   }
@@ -186,7 +182,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      fetchCategoryHierarchy: fetchCategoryHierarchy,
+     // fetchCategoryHierarchy: fetchCategoryHierarchy,
       fetchBMByCat: (catid) => fetchBMByCat(catid), //for fetching booksmarks by selected category
       fetchBMCat: fetchBMCat, //for fetching categories and count
       errorOut: errorAfterFiveSeconds,

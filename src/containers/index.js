@@ -10,19 +10,6 @@ import Managecat from './managecat'
 import {Container, Icon, Message} from 'semantic-ui-react'
 import Login from './login'
 
-const themes = {
-  light: {
-    foreground: "#000000",
-    background: "teal"
-  },
-  dark: {
-    foreground: "#ffffff",
-    background: "green"
-  }
-};
-
-const ThemeContext = React.createContext(themes.light)
-
 
 function App(props){
   let _activeComp
@@ -71,17 +58,14 @@ function App(props){
   }
 
   return (
-    <ThemeContext.Provider value={themes.light}>
-      <Container fluid>
-        <h2><Icon name='bookmark outline' size='small'></Icon>Bookmarks</h2>
-        {_activeComp}
-      </Container>
-    </ThemeContext.Provider>
+    <Container fluid className='main'>
+      <h2><Icon name='bookmark outline' size='small' color='grey'></Icon>Bookmarks</h2>
+      {_activeComp}
+    </Container>
   );
 }
 
 
 export {
-  App,
-  ThemeContext
+  App
 } 

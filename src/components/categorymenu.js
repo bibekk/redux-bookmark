@@ -1,5 +1,5 @@
 import React from "react"
-import {  Menu, Icon } from "semantic-ui-react"
+import {  Menu } from "semantic-ui-react"
 
 class Categorymenu extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class Categorymenu extends React.Component {
       <Menu className={rank} vertical size="tiny" fluid>
         <MenuV
           data={this.props.data}
-          cat_heir={this.props.cat_heir}
+          //cat_heir={this.props.cat_heir}
           filterBlogCallback={this.props.filterBlogCallback}
           rank={rank}
           activeCategory={this.props.activeCategory}
@@ -42,7 +42,8 @@ class MenuV extends React.Component {
   }
 
   render() {
-    const {cat_heir} = this.props
+
+   // const {cat_heir} = this.props
     const PART = 4
     const PER = this.props.data.length / PART
 
@@ -74,15 +75,18 @@ class MenuV extends React.Component {
         key={c.cat_id}
         active={c.cat_id === parseInt(this.props.activeCategory)?true: false}
         onClick={() => this.handleItemClick(c.cat_id)}
-        onDrop={(e) => this.drop(e, c.cat_id, c.category)}
+        onDrop={(e) =>{ this.drop(e, c.cat_id, c.category); }}
         onDragOver={this.allowDrop}
-        // onDragEnter={() => this.setState({ dragoverId: c.cat_id })}
+        onDragEnter={() => this.setState({ dragoverId: c.cat_id })}
+        //className={this.state.dragoverId === c.cat_id ? 'activedragover':null}
+       // onDragEnd = {()=> this.setState({dragoverId: null})}
       >
-        {cat_heir !== undefined && cat_heir.filter((f) => f.primary_cat_id === c.cat_id).length > 0 && <><span><Icon name='angle right'/>{c.category}</span>
-        {/* {cat_heir.filter(f => f.primary_cat_id === c.cat_id).map(m=><Menu.Item key={m.secondary_cat_id}>{m.secondary_cat}</Menu.Item>)} */}
-        </>}
-        {cat_heir !== undefined && cat_heir.filter((f) => f.primary_cat_id === c.cat_id).length === 0 && <span>{c.category}</span>}
-        {/*cat_heir.filter(f=>f.primary_cat_id === f.cat_id).length > 0 ? <span>test{c.category}</span>:<b>{c.category}</b>*/}
+        {c.category}
+        {/* {cat_heir !== undefined && cat_heir.filter((f) => f.primary_cat_id === c.cat_id).length > 0 && 
+        <><span><Icon name='angle right'/>{c.category}</span>
+        </>
+        } */}
+        {/* {cat_heir !== undefined && cat_heir.filter((f) => f.primary_cat_id === c.cat_id).length === 0 && <span>{c.category}</span>} */}
         {/* {_cat.filter((f) => f.parent_cat_id !== null && f.cat_id === c.cat_id).length } */}
       </Menu.Item>
     ))

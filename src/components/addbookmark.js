@@ -2,18 +2,18 @@ import React ,{useState, useEffect} from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { addBookmark, createBookmark, bookmarksAddedSetOff} from '../actions/action-bm'
 import {Form, Button, Message, Modal, Header} from 'semantic-ui-react'
-const _ = require('lodash')
+//const _ = require('lodash')
 
 const AddBookmark = props => {
  // let _cat = [],
-  let _catinputnochild = [],
-    _catinputwithchild = []
+  let _catinputnochild = []
+   // _catinputwithchild = []
   let URL = React.createRef()
 
   const categories = useSelector((state) => state.categories)
   const added = useSelector((state) => state.bookmarksAdded)
   const active_cat = useSelector((state) => state.activeCategory)
-  const cat_heir = useSelector((state) => state.cat_heir)
+  //const cat_heir = useSelector((state) => state.cat_heir)
 
   const [cat_id, setCatID] = useState(null)
 
@@ -39,7 +39,6 @@ const AddBookmark = props => {
   }
 
   categories
-    .filter((f) => f.parent_cat_id === null && cat_heir.filter(g=> g.primary_cat_id === f.cat_id).length === 0)
     .forEach((v, i) => {
       // _cat.push(<option key={i} className='cat_option' value={v.cat_id}>{v.category}</option>)
       _catinputnochild.push(
@@ -49,21 +48,21 @@ const AddBookmark = props => {
       )
     })
 
-    let _cats = _.groupBy(cat_heir,'primary_cat')
-    for(var c in _cats){
-      _catinputwithchild.push(
-        <li key={c}>
-          <b>{c}</b>
-        </li>
-      )
-      _cats[c].forEach((v) => {
-        _catinputwithchild.push(
-          <li key={v.secondary_cat_id} className={cat_id === v.secondary_cat_id ? 'active' : null} onClick={() => setCatID(v.secondary_cat_id)}>
-            {v.secondary_cat}
-          </li>
-        )
-      })
-    }
+    ///let _cats = _.groupBy(cat_heir,'primary_cat')
+    // for(var c in _cats){
+    //   _catinputwithchild.push(
+    //     <li key={c}>
+    //       <b>{c}</b>
+    //     </li>
+    //   )
+    //   _cats[c].forEach((v) => {
+    //     _catinputwithchild.push(
+    //       <li key={v.secondary_cat_id} className={cat_id === v.secondary_cat_id ? 'active' : null} onClick={() => setCatID(v.secondary_cat_id)}>
+    //         {v.secondary_cat}
+    //       </li>
+    //     )
+    //   })
+    // }
     // for(var i = 0 ; i < _cats.length; i++){
     //   console.log(_cats[i])
     // }
@@ -98,9 +97,7 @@ const AddBookmark = props => {
           <div>
             <ul className="addbookmark_categories">{_catinputnochild}</ul>
           </div>
-          <div>
-            <ul className="addbookmark_categories1">{_catinputwithchild}</ul>
-          </div>
+        
         </Modal.Description>
       </Modal.Content>
     </Modal>

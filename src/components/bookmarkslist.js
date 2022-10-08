@@ -1,7 +1,9 @@
-import React, { useState } from "react"
-import { Table, Label, Button, Form, Confirm } from "semantic-ui-react"
+import React, { useState, useEffect } from "react"
+import { Table, Label, Button, Form, Confirm, Pagination, Message } from "semantic-ui-react"
 import { useSelector } from "react-redux"
-import Categorymenu from "./categorymenu"
+
+const _ = require('lodash')
+//import Categorymenu from "./categorymenu"
 
 function Bookmarkslist(props) {
   let _category
@@ -13,11 +15,24 @@ function Bookmarkslist(props) {
   const [bmtitle, setBmtitle] = useState(null)
   // const [updatecat, setUpdateCat] = useState([])
   const categories = useSelector((state) => state.categories)
-  const activecategory = useSelector((state) => state.activeCategory)
-  const cat_heir = useSelector((state) => state.cat_heir)
+  //const activecategory = useSelector((state) => state.activeCategory)
+  //const cat_heir = useSelector((state) => state.cat_heir)
 
   // console.log(props.items[0].parent_cat_id)
   // console.log(categories.filter((f) => f.cat_id === parseInt(props.items[0].parent_cat_id)))
+
+   //paging
+  const [paging, setPaging] = useState({ defaultPage: 1, activePage: null, totalPages: null })
+  const [chunked_items, setChunkedItems] = useState([])
+  const PERPAGE = 20
+
+  useEffect(()=> {
+ //for paging
+    const items = _.chunk(props.items, PERPAGE)
+    const totalpages = _.size(items)
+    setPaging({ defaultPage: 1, activePage: 1, totalPages: totalpages })
+    setChunkedItems(items)
+  },[props.items, props.activeCategory])
 
   const _deleteBookmark = () => {
     props.deleteBM(itemid, cat_id)
@@ -26,8 +41,13 @@ function Bookmarkslist(props) {
 
   const _updateCatPre = (e, itemid) => {
     //console.log(e.target.value, itemid)
-    console.log(document.querySelector(`#cat_${itemid}`).value)
-    console.log(document.querySelector(`#cat_${itemid}`).selectedOptions[0].text)
+    //console.log(document.querySelector(`#cat_${itemid}`).value)
+    //console.log(document.querySelector(`#cat_${itemid}`).selectedOptions[0].text)
+  }
+
+  const onPageChange = (e, data) => {
+    // setActivePage(data.activePage)
+    setPaging({ activePage: data.activePage, defaultPage: paging.defaultPage, totalPages: paging.totalPages })
   }
 
   const dragItem = (e, id, cat, url, category) => {
@@ -43,43 +63,36 @@ function Bookmarkslist(props) {
     )
   })
 
+  if (_.size(chunked_items) === 0) {
+    return (
+      <Message warning style={{ marginLeft: "25px" }}>
+        <Message.Header>No items found for this category.</Message.Header>
+      </Message>
+    )
+  }
+
   return (
     <div className="main">
-      {_category !== undefined && <h2>{_category}</h2>}
+      {_category !== undefined && <h2 className="subcat">{_category}</h2>}
       {props.search && <h3>Total: {props.items.length}</h3>}
-      {categories.filter((f) => f.parent_cat_id === activecategory).length > 0 && (
-        <Categorymenu
-          data={categories.filter((f) => f.parent_cat_id === activecategory)}
-          cat_heir={cat_heir}
-          filterBlogCallback={props.filterBlogCallback}
-          activeCategory={activecategory}
-          updateBM={props.updateBM}
+
+      {paging.totalPages > 1 && (
+        <Pagination
+          //defaultActivePage={1}
+          activePage={paging.activePage}
+          onPageChange={onPageChange}
+          totalPages={paging.totalPages}
+          firstItem={paging.totalPages > 1 ? "«" : null}
+          lastItem={paging.totalPages > 1 ? "»" : null}
+          nextItem={paging.totalPages > 1 ? "⟩" : null}
+          prevItem={paging.totalPages > 1 ? "⟨" : null}
         />
       )}
-      {props.items.length > 0 && props.items[0].parent_cat_id !== null && (
-        <>
-          {/* {categories.filter((f) => f.cat_id === parseInt(props.items[0].parent_cat_id))[0].category} */}
-          Main Category:
-          <Categorymenu
-            cat_heir={cat_heir}
-            data={categories.filter((f) => f.cat_id === props.items[0].parent_cat_id)}
-            filterBlogCallback={props.filterBlogCallback}
-            activeCategory={activecategory}
-            updateBM={props.updateBM}
-          />
-          Sub Category:
-          <Categorymenu
-            cat_heir={cat_heir}
-            data={categories.filter((f) => f.parent_cat_id === props.items[0].parent_cat_id)}
-            filterBlogCallback={props.filterBlogCallback}
-            activeCategory={activecategory}
-            updateBM={props.updateBM}
-          />
-        </>
-      )}
+
       <Table striped={true} compact="very" color="blue">
         <Table.Body>
-          {props.items.map((item) => {
+          {//props.items.map((item) => {
+            chunked_items[paging.activePage - 1].map((item) => {
             // console.log(item)
             let _urlfield = 'url_' + item.id
 

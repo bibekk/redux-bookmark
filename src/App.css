@@ -50,7 +50,7 @@ div.vertical.menu.third {
 
 div.vertical.menu a {
   border-radius: 3px;
-  background: rgba(231, 242, 250, 0.74) !important;
+  background: rgba(231, 242, 250, 0.74) ;
   font-weight: bold !important;
 }
 div.vertical.menu a:hover {
@@ -117,6 +117,9 @@ table.teal tr {
 table.teal tr td:first-child {
   min-width: 100px;
 }
+table td a:hover {
+  color: rgb(7, 55, 109)!important;
+}
 
 /* for categories */
 
@@ -126,7 +129,7 @@ ul.addbookmark_categories {
   list-style-type: none;
   padding: 3px;
   width: 100%;
-  height: 280px;
+  height: 350px;
 }
 
 ul.addbookmark_categories li {
@@ -136,9 +139,16 @@ ul.addbookmark_categories li {
   border: 1px solid #ccc;
   border-radius: 3px;
   margin: 1px;
+  background-color: #ccc;
+}
+
+ul.addbookmark_categories li.active{
+  background-color: #2870c2;
+  color: #fff;
 }
 ul.addbookmark_categories li:hover {
-  background: #ccc;
+  background: #2870c2;
+  color:#fff;
   cursor: pointer;
 }
 
@@ -176,3 +186,50 @@ select.bookmark-option {
 }
 
 /* end add bookmarks*/
+
+/* for dark mode */
+body {
+  background-color: #456!important;
+}
+.main ,  div.main table{
+  background-color: rgba(68, 85, 102, 0.394)!important;
+}
+
+table td a {
+  color: rgb(30, 96, 68)!important;
+}
+.main h2 {
+  color: #ccc;
+}
+
+div.ui.pagination {
+  background-color: rgba(204, 204, 204, 0.167)!important;
+}
+
+div.row div div{
+  background-color: #ebebeb!important;
+}
+
+div.vertical.menu {
+  background-color:  rgba(68, 85, 102, 0.394)!important;
+  border-color: #ccc;
+}
+
+div.vertical.menu .item {
+  color: rgba(197, 205, 213, 0.96);
+  border-bottom:1px solid #ccc;
+}
+
+h2.subcat{
+  padding: 3px;
+  color: #456;
+  background-color: #ccc;
+}
+
+div.modal .header {
+  background-color: #ccc!important;
+}
+
+.activedragover {
+  background-color: #60a1ec!important;
+}

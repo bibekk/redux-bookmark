@@ -145,21 +145,6 @@ export const fetchBMByCat = (cat_id = "34") => {
   }
 }
 
-/* export const fetchBMByCat = (cat_id) => {
-  return (dispatch) => {
-    //dispatch(itemsIsLoading(true))
-    fetch(base_url()+'/getBookmarksByCategory/'+cat_id).then(response =>{
-      if(!response.ok){
-        throw Error(response.statusText)
-      }
-      //dispatch(itemsIsLoading(false))
-      return response
-    })
-    .then(response => response.json())
-    .then(items => dispatch(itemsFetchDataSuccess(items, cat_id)))
-    .catch(()=> dispatch(itemsHasErrored(true)) )
-  }
-} */
 
 export const searchData = (text) => {
   return (dispatch) => {
