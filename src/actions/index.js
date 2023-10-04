@@ -1,6 +1,6 @@
 import { deleteCat, editCat, updateCat, cancelCatEdit } from "./action-cat"
 
-export const ENV = "uat"
+export const ENV = "uat2"
 
 export const ADD_BOOKMARK = "ADD_BOOKMARK"
 export const ADD_BOOKMARK_SUCCESS = "ADD_BOOKMARK_SUCCESS"

@@ -3,7 +3,7 @@ import "../App.css"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { fetchBMCat } from "../actions/action-cat"
-import { deleteBM, fetchBMByCat, errorAfterFiveSeconds, editBM, updateBM, cancelEdit, searchData, cleanSearch } from "../actions/action-bm"
+import { deleteBM, fetchBMByCat, errorAfterFiveSeconds, editBM, updateBM, cancelEdit, searchData, cleanSearch, pinBM } from "../actions/action-bm"
 import { fetchTermsFromDB } from "../actions/action-terms"
 
 import Categorymenu from "../components/categorymenu"
@@ -26,6 +26,7 @@ const Home = (props) => {
     search,
     activeCategory,
     deleteBM,
+    pinBM,
     editBM,
     updateBM,
     cancelEdit,
@@ -60,27 +61,27 @@ const Home = (props) => {
     }
   }
 
-  const download = () => {
-    fetch("http://localhost:8080/bookmark/getAllBookmarks").then((response) => {
-      response.blob().then((blob) => {
-        let url = window.URL.createObjectURL(blob)
-        let a = document.createElement("a")
-        a.href = url
-        a.download = "bookmarks.csv"
-        a.click()
-      })
-    })
+  // const download = () => {
+  //   fetch("http://"+window.location.hostname+":8080/bookmark/getAllBookmarks").then((response) => {
+  //     response.blob().then((blob) => {
+  //       let url = window.URL.createObjectURL(blob)
+  //       let a = document.createElement("a")
+  //       a.href = url
+  //       a.download = "bookmarks.csv"
+  //       a.click()
+  //     })
+  //   })
 
-    fetch("http://localhost:8080/bookmark/getAllCategories").then((response) => {
-      response.blob().then((blob) => {
-        let url = window.URL.createObjectURL(blob)
-        let a = document.createElement("a")
-        a.href = url
-        a.download = "categories.csv"
-        a.click()
-      })
-    })
-  }
+  //   fetch("http://"+window.location.hostname+":8080/bookmark/getAllCategories").then((response) => {
+  //     response.blob().then((blob) => {
+  //       let url = window.URL.createObjectURL(blob)
+  //       let a = document.createElement("a")
+  //       a.href = url
+  //       a.download = "categories.csv"
+  //       a.click()
+  //     })
+  //   })
+  // }
   return (
     <Grid>
       <Grid.Row>
@@ -92,13 +93,13 @@ const Home = (props) => {
             <Button icon="add" onClick={() => setOpenBM(true)} content="Add" />
             <Button icon="list alternate outline" onClick={() => setOpenCat(true)} content="Category" />
             <Button icon="clipboard list" onClick={() => setOpenTerms(true)} content="Terms" />
-            <Button icon="database" onClick={download} content="Backup" />
+            {/* <Button icon="database" onClick={download} content="Backup" /> */}
           </Button.Group>
           &nbsp;
           <Input icon="search" placeholder="Search Text" onChange={searchBM} ref={searchRef} />
           &nbsp;
           {searchText !== '' ? (
-            <Button basic color="green" onClick={clearSearch}>
+            <Button   onClick={clearSearch}>
               Clear
             </Button>
           ) : null}
@@ -135,6 +136,7 @@ const Home = (props) => {
               items={items}
               deleteBM={deleteBM}
               editBM={editBM}
+              pinBM={pinBM}
               updateBM={updateBM}
               cancelEdit={cancelEdit}
               filterBlogCallback={fetchBMByCat}
@@ -188,6 +190,7 @@ const mapDispatchToProps = (dispatch) => {
       errorOut: errorAfterFiveSeconds,
       deleteBM: (id, cat_id) => deleteBM(id, cat_id),
       editBM: (id) => editBM(id),
+      pinBM: (id, currentcat,pin) => pinBM(id, currentcat,pin),
       cancelEdit: (id) => cancelEdit(id),
       updateBM: (id, url, cat_id, category, currentcat) => updateBM(id, url, cat_id, category, currentcat),
       searchData: (text) => searchData(text),

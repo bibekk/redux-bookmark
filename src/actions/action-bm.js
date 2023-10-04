@@ -210,6 +210,26 @@ export const deleteBM = (id, cat_id) => {
   }
 }
 
+export const pinBM = (id, currentcat,pin) => {
+  return (dispatch) => {
+    fetch(base_url() + "/updateBookmarkPin", {
+      method: "put",
+      headers: new Headers({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ id, pin  }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.affectedRows === 1) {
+        //dispatch(updateSuccess(id, url, cat_id, category)) //dispatch(fetchBMByCat(cat_id))
+        dispatch(fetchBMByCat(currentcat))
+      } else {
+        dispatch(itemsHasErrored(true))
+      }
+    })
+    .catch(() => dispatch(itemsHasErrored(true)))
+  }
+}
+
 export const updateBM = (id, url, cat_id, category, currentcat) => {
   //console.log(id, url, cat_id, category)
   return (dispatch) => {

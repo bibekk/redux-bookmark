@@ -59,7 +59,7 @@ function App(props){
 
   return (
     <Container fluid className='main'>
-      <h2><Icon name='bookmark outline' size='small' color='grey'></Icon>Bookmarks</h2>
+      <h2><Icon name='bookmark' size='small' ></Icon>Bookmarks</h2>
       {_activeComp}
     </Container>
   );

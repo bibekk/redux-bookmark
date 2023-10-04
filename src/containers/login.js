@@ -8,7 +8,7 @@ function Login(props) {
   useEffect(()=>{
     if(props.isValidLogin === 0 ){
       const timer = setTimeout( ()=>{
-         setErrorMessage(true)
+        setErrorMessage(true)
       },2000)
       return ()=> clearTimeout(timer)
     }
@@ -21,7 +21,6 @@ function Login(props) {
 
   return (
     <Container className='login-form'>
-      <h3>Login</h3>
       <Form onSubmit={()=>submitTerm(pass)}>
         <Form.Field>
           <input placeholder='Code' ref={pass} type='password' autoFocus  size='20'/>

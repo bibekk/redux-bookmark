@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Table, Label, Button, Form, Confirm, Pagination, Message } from "semantic-ui-react"
+import { Table, Label, Button, Form, Confirm, Pagination, Message, Icon } from "semantic-ui-react"
 import { useSelector } from "react-redux"
 
 const _ = require('lodash')
@@ -73,7 +73,7 @@ function Bookmarkslist(props) {
 
   return (
     <div className="main">
-      {_category !== undefined && <h2 className="subcat">{_category}</h2>}
+      {_category !== undefined && <h2 className="subcat"><Icon name='sticky note' size='small'  />{_category}</h2>}
       {props.search && <h3>Total: {props.items.length}</h3>}
 
       {paging.totalPages > 1 && (
@@ -89,7 +89,7 @@ function Bookmarkslist(props) {
         />
       )}
 
-      <Table striped={true} compact="very" color="blue">
+      <Table striped={true} compact="very">
         <Table.Body>
           {//props.items.map((item) => {
             chunked_items[paging.activePage - 1].map((item) => {
@@ -100,6 +100,7 @@ function Bookmarkslist(props) {
               return (
                 <Table.Row key={item.id} draggable={true} onDragStart={(e) => dragItem(e, item.id, item.cat_id, item.url, _category)}>
                   <Table.Cell>
+                    {item.pin !== null ? <Button icon='pin' size='mini' color='blue' circular   onClick={()=>props.pinBM(item.id,categories.filter((f) => f.category === _category)[0].cat_id,null)}></Button>:<Button icon='pin'  size='mini' color='brown' basic circular onClick={()=>props.pinBM(item.id,categories.filter((f) => f.category === _category)[0].cat_id,'1')} />}
                     <a href={item.url} target="_blank" rel="noopener noreferrer">
                       {item.url}
                     </a>
@@ -119,8 +120,6 @@ function Bookmarkslist(props) {
                         setBmtitle(item.url)
                       }}
                     />
-                  </Table.Cell>
-                  <Table.Cell textAlign="right">
                     <Button icon="edit" size="mini" basic color="blue" onClick={() => props.editBM(item.id)} />
                   </Table.Cell>
                 </Table.Row>
@@ -146,6 +145,7 @@ function Bookmarkslist(props) {
                     <Button
                       icon="write"
                       basic
+                      size='mini'
                       color="brown"
                       onClick={() => {
                         props.updateBM(
@@ -157,11 +157,8 @@ function Bookmarkslist(props) {
                         )
                       }}
                     />
+                    <Button icon="cancel" size='mini' basic color="green" onClick={() => props.cancelEdit(item.id)} />
                   </Table.Cell>
-                  <Table.Cell textAlign="right">
-                    <Button icon="cancel" basic color="green" onClick={() => props.cancelEdit(item.id)} />
-                  </Table.Cell>
-                  <Table.Cell></Table.Cell>
                 </Table.Row>
               )
             }
